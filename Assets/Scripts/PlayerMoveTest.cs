@@ -59,9 +59,9 @@ public class PlayerMoveTest : MonoBehaviour
         rb.MovePosition(transform.position + my_input * Time.deltaTime * speed);
 
         //might not want player to look at cursor?
-        Vector2 look_dir = mouse_pos - rb.position;
-        float angle = Mathf.Atan2(look_dir.y, look_dir.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
+        //Vector2 look_dir = mouse_pos - rb.position;
+        //float angle = Mathf.Atan2(look_dir.y, look_dir.x) * Mathf.Rad2Deg - 90f;
+        //rb.rotation = angle;
     }
 
     
