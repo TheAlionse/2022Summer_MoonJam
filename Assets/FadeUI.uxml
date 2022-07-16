@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/Fade.uss?fileID=7433441132597879392&amp;guid=08658884fa0c58844a4e274102c210a2&amp;type=3#Fade" />
+    <ui:VisualElement name="fade_screen" class="Fade" style="background-color: rgba(0, 0, 0, 0);" />
+</ui:UXML>

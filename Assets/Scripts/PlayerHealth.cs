@@ -5,9 +5,16 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public int player_health = 10;
+    public int max_health;
 
     private bool immune = false;
 
+
+    public void heal_player(int heal)
+    {
+        player_health = Mathf.Min(player_health + heal, max_health);
+        Debug.Log("healed");
+    }
     public void takeDamage(int dmg)
     {
         if (immune == false)
