@@ -1,0 +1,21 @@
+.pause-screen-button {
+    height: 43px;
+    width: 173px;
+    top: 85px;
+    background-color: rgb(212, 212, 212);
+}
+
+.pause-screen-button:hover {
+    height: 43px;
+    width: 173px;
+    top: 85px;
+    background-color: rgb(197, 197, 197);
+}
+
+.pause-screen-button:active {
+    height: 43px;
+    width: 173px;
+    top: 85px;
+    background-color: rgb(132, 132, 132);
+    color: rgba(255, 255, 255, 255);
+}
