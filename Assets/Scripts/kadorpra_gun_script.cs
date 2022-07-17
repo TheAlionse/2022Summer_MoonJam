@@ -8,9 +8,6 @@ public class kadorpra_gun_script : MonoBehaviour
     public GameObject bulletSpawn;
     public AudioSource shoot_audio;
     public GunStats gunStats;
-    public float velocity = 15;
-    public float size = 2;
-    public float range = 1;
 
     public void Shoot()
     {

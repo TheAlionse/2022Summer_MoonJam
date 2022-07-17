@@ -20,6 +20,7 @@ public class GunBehavior : MonoBehaviour
             {
                 gunObject = gun;
                 gunStats = gun.GetComponent<GunStats>();
+                Debug.Log(gunStats.damage);
                 break;
             }
         }

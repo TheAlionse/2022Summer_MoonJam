@@ -17,7 +17,7 @@ public class KadorpraAIScript : MonoBehaviour
     {
         points.Add(GameObject.FindGameObjectsWithTag("Player")[0]);
         rb = gameObject.GetComponent<Rigidbody2D>();
-        InvokeRepeating("Shoot", 2.0f, gunStats.cooldown);
+        //InvokeRepeating("Shoot", 2.0f, gunStats.cooldown);
         InvokeRepeating("Move", 2.0f, 2.0f);
     }
 
