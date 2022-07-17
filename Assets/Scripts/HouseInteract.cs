@@ -73,6 +73,7 @@ public class HouseInteract : MonoBehaviour
         //fade to black
         FadeOut();
         yield return new WaitForSeconds(1f);
+        Debug.Log(obj_coord.transform.position);
         player.transform.position = obj_coord.transform.position;
         yield return new WaitForSeconds(.5f);
         FadeIn();

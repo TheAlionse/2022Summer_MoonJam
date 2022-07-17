@@ -9,7 +9,7 @@ public class FadeScript : MonoBehaviour
     public VisualElement fade_screen;
     private void Start()
     {
-        var root = GetComponent<UIDocument>().rootVisualElement;
+        VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
         fade_screen = root.Q<VisualElement>("fade_screen");
     }

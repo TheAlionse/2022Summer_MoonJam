@@ -41,11 +41,11 @@ public class LightningBossFight : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("PlayerBullet") && !am_immune)
+        if (collision.CompareTag("PlayerProjectile") && !am_immune)
         {
             StartCoroutine("dmgImmune");
             //update hp
-            health -= collision.GetComponent<PlayerBulletDMG>().give_dmg();
+            health -= (int)collision.GetComponent<BulletStats>().damage;
             //change color?
             StartCoroutine("amred");
             //give temp immune?
