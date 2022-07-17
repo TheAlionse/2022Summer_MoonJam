@@ -21,7 +21,8 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealth(int health)
     {
-        var new_width = (width / max_health) * health;
+        //replaced Max_health with 10 cause of weird error
+        var new_width = (width / 10) * health;
         hp_fill.style.width = new_width;
     }
 
