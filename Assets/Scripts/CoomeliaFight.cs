@@ -5,10 +5,12 @@ public class CoomeliaFight : MonoBehaviour
 {
     public float health;
     public float speed;
-    public float pyscho_cut_force;
+    public float pyscho_cut_force; 
+    public float moonblast_force;
 
-    public float futute_leftx_coord;
-    public float futute_rightx_coord;
+    public float future_leftx_coord;
+    public float future_rightx_coord;
+    public int[] future_yposs = new int[] { -25, -40, -55 };
 
     public GameObject pyschocut_prefab;
     public GameObject aurorabeam_warning_prefab;
@@ -18,7 +20,7 @@ public class CoomeliaFight : MonoBehaviour
     public GameObject futuresight_post_prefab;
     public GameObject futuresight_charge_prefab;
     public GameObject firepoint;
-
+    public GameObject moonblast_prefab;
 
     private Vector2 cur_move;
     private float max_height = -25;
@@ -30,12 +32,14 @@ public class CoomeliaFight : MonoBehaviour
     private bool psychocut_offcycle = false;
     private int phase;
     private bool move;
+    private bool stay;
 
     // Start is called before the first frame update
     void Start()
     {
         move = true;
-        phase = 1;
+        stay = true;
+        phase = 3;
         cur_move = new Vector2(left_x, min_height);
         facing_right = true;
         my_sprite = gameObject.GetComponent<SpriteRenderer>();
@@ -62,8 +66,8 @@ public class CoomeliaFight : MonoBehaviour
     }
     IEnumerator FightRotation()
     {
-        if(phase == 1) {
-            yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f);
+        if (phase == 1) {
             //psycho cut //lots of blades
             psychocut();
             yield return new WaitForSeconds(1f);
@@ -82,19 +86,20 @@ public class CoomeliaFight : MonoBehaviour
         {
             //double team //spawn fake that also uses abilities low hp(transition)
             //aurora beam
+            StartCoroutine("aurorabeam");
+            yield return new WaitForSeconds(5f);
             //pyscho cut
             psychocut();
             yield return new WaitForSeconds(1f);
             //Future Sight Charge //waits
             StartCoroutine("futuresight");
+            yield return new WaitForSeconds(1f);
             //pyscho cut
             psychocut();
             yield return new WaitForSeconds(1f);
             //aurora beam
-            //Future Sight Charge //preview
             StartCoroutine("aurorabeam");
             yield return new WaitForSeconds(5f);
-            yield return new WaitForSeconds(3f);
         }
 
         //phase 3
@@ -103,16 +108,34 @@ public class CoomeliaFight : MonoBehaviour
             //double team(transition)
             //moon beam (transition) (heal)
             //moon blast //Large Balls
+            moonblast();
+            yield return new WaitForSeconds(1f);
             //Future Sight Charge
+            StartCoroutine("futuresight");
+            yield return new WaitForSeconds(1f);
             //aurora beam
+            StartCoroutine("aurorabeam");
+            yield return new WaitForSeconds(5f);
             //aurora beam
+            StartCoroutine("aurorabeam");
+            yield return new WaitForSeconds(5f);
             //Future Sight Hit (AOE)
             //pyscho cut
+            psychocut();
+            yield return new WaitForSeconds(1f);
+            psychocut();
+            yield return new WaitForSeconds(1f);
+            psychocut();
+            yield return new WaitForSeconds(1f);
         }
 
         //tp to other side
         yield return new WaitForSeconds(1f);
-        switchsides();
+        if (!stay)
+        {
+            switchsides();
+        }
+        stay = !stay;
         StartCoroutine("FightRotation");
     }
 
@@ -190,43 +213,41 @@ public class CoomeliaFight : MonoBehaviour
 
     IEnumerator futuresight()
     {
-        float xval = futute_leftx_coord;
+        float xval = future_leftx_coord;
         GameObject charge = Instantiate(futuresight_charge_prefab, transform);
         if (!facing_right)
         {
             charge.GetComponent<SpriteRenderer>().flipX = true;
-            xval = futute_rightx_coord;
+            xval = future_rightx_coord;
         }
 
+        int yval = future_yposs[Random.Range(0, 3)];
+        Debug.Log(yval);
 
         yield return new WaitForSeconds(2f);
         //maybe make fade in?
         GameObject warning = Instantiate(futuresight_warning_prefab);
-        //select 1
+        warning.transform.position = new Vector2(xval, yval);
         yield return new WaitForSeconds(2f);
         GameObject hit = Instantiate(futuresight_hit_prefab);
+        hit.transform.position = new Vector2(xval, yval);
         Destroy(warning);
         Destroy(charge);
         yield return new WaitForSeconds(2f);
         GameObject post = Instantiate(futuresight_post_prefab);
+        post.transform.position = new Vector2(xval, yval);
         Destroy(hit);
         yield return new WaitForSeconds(2f);
         Destroy(post);
     }
 
-    private void doubleteam()
-    {
-
-    }
-
-    private void moonbeam() //heal
-    {
-
-    }
-
     private void moonblast() //dmg
     {
-
+            Vector3 player_pos = GameObject.FindWithTag("Player").transform.position;
+        GameObject moonblast = Instantiate(moonblast_prefab);
+        moonblast.transform.position = firepoint.transform.position;
+        lookat(player_pos, moonblast.transform);
+        moonblast.GetComponent<Rigidbody2D>().AddForce((player_pos - moonblast.transform.position)* moonblast_force);
     }
 
 }

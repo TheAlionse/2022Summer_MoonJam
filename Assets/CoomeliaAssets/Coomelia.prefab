@@ -149,8 +149,10 @@ MonoBehaviour:
   health: 50
   speed: 3
   pyscho_cut_force: 10
-  futute_leftx_coord: 180
-  futute_rightx_coord: 207
+  moonblast_force: 12
+  future_leftx_coord: 180
+  future_rightx_coord: 207
+  future_yposs: e7ffffffd8ffffffc9ffffff
   pyschocut_prefab: {fileID: 6664078207326888099, guid: 78d754cf69245dc478200cc40821e8cd, type: 3}
   aurorabeam_warning_prefab: {fileID: 9076456856232584908, guid: abef31d999329704da03b8e72ba3293f, type: 3}
   aurorabeam_hit_prefab: {fileID: 808886711620385042, guid: c22689c56c4129f4994daeacaa2ace5e, type: 3}
@@ -159,3 +161,4 @@ MonoBehaviour:
   futuresight_post_prefab: {fileID: 3717070018521244434, guid: 1896ecfa49b0624478f80b11f4ff3d40, type: 3}
   futuresight_charge_prefab: {fileID: 4948325423531486538, guid: 8c4ff887a19dd9f499a00a71d59d4f0e, type: 3}
   firepoint: {fileID: 4765515822460799130}
+  moonblast_prefab: {fileID: 6093578675896712612, guid: 437be6ed4fe23e84c95a6755100e9eeb, type: 3}

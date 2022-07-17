@@ -169,5 +169,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_health: 10
-  max_health: 0
-  health_bar: {fileID: 0}
+  max_health: 10
+  health_bar: {fileID: 955536702960298577, guid: c37b2b9ad4557974585ff1f70b6bb9ba, type: 3}
