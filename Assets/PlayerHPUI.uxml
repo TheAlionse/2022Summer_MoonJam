@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/UI/UserInterfaceStyleSheet.uss?fileID=7433441132597879392&amp;guid=ee4076477e2b1ac4f9764e388952ba47&amp;type=3#UserInterfaceStyleSheet" />
+    <ui:VisualElement name="Canvas" style="flex-grow: 1; justify-content: flex-end; margin-bottom: 20px; margin-left: 20px;">
+        <ui:GroupBox name="GroupBox" style="width: 480px; flex-grow: 0; flex-direction: row; flex-shrink: 1; align-items: auto; overflow: visible; justify-content: space-around; height: auto; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; position: absolute;">
+            <ui:VisualElement name="FillBG" style="background-color: rgb(188, 188, 188); height: 59px; width: 327px; flex-grow: 0; -unity-text-align: upper-left; position: absolute; top: 10px; left: 118px; align-items: auto;" />
+            <ui:VisualElement name="Fill" style="background-color: rgb(255, 40, 0); height: 59px; width: 330px; flex-grow: 0; -unity-text-align: upper-left; position: absolute; top: 10px; left: 117px; align-items: auto;" />
+            <ui:VisualElement name="Border" style="background-image: url(&apos;project://database/Assets/Sprites/hp-bar.png?fileID=2800000&amp;guid=36742171788f919459cfa7e755b2dfbc&amp;type=3#hp-bar&apos;); width: 480px; height: 80px; -unity-background-scale-mode: scale-to-fit; bottom: auto; left: auto;" />
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>

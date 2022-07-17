@@ -17,5 +17,9 @@
     width: 173px;
     top: 85px;
     background-color: rgb(132, 132, 132);
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+
+.unity-progress-bar {
+    min-height: auto;
 }
