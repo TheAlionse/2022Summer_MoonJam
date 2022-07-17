@@ -9,6 +9,12 @@ public class DarkBossFight : MonoBehaviour
     public float speed;
     public GameObject shadowball_prefab;
 
+    public AudioSource shadow_ball_audio;
+    public AudioSource damage_audio;
+    public AudioSource spawn_audio;
+    public AudioSource phase_change_audio;
+    public AudioSource die_audio;
+
     private Renderer my_ren;
 
     private bool am_immune;
@@ -35,12 +41,18 @@ public class DarkBossFight : MonoBehaviour
         player = GameObject.FindWithTag("Player");
     }
 
+    void OnEnable()
+    {
+        spawn_audio.Play();
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("PlayerBullet") && !am_immune)
         {
             StartCoroutine("dmgImmune");
             //update hp
+            damage_audio.Play();
             health -= collision.GetComponent<PlayerBulletDMG>().give_dmg();
             //change color?
             StartCoroutine("amred");
@@ -50,6 +62,7 @@ public class DarkBossFight : MonoBehaviour
             if (health <= phase_change1 && phase == 1)
             {
                 Debug.Log("phase 2");
+                phase_change_audio.Play();
                 phase = 2;
                 speed += 2;
             }
@@ -57,6 +70,7 @@ public class DarkBossFight : MonoBehaviour
             {
                 Debug.Log("phase 3");
                 //play death animation
+                die_audio.Play();
                 Destroy(gameObject);
             }
             Debug.Log(health);
@@ -126,6 +140,7 @@ public class DarkBossFight : MonoBehaviour
 
     private void ShadowBall()
     {
+        shadow_ball_audio.Play();
         Vector2 player_pos = player.transform.position;
         GameObject shadowball = Instantiate(shadowball_prefab);
         shadowball.transform.position = gameObject.transform.position;
