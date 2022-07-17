@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8922053392797465282}
   - component: {fileID: 8922053392797465283}
   - component: {fileID: 8780837155419780043}
+  - component: {fileID: 926649387671843641}
   m_Layer: 0
   m_Name: borpey_slash_prefab
-  m_TagString: Untagged
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8922053392797465284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.47, y: -0.03, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -154,3 +155,16 @@ PolygonCollider2D:
       - {x: 0.30953348, y: 0.5985261}
       - {x: 0.2710073, y: 0.65248144}
       - {x: 0.2265112, y: 0.73953354}
+--- !u!114 &926649387671843641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8922053392797465284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6e6cf78d72c7641b47ef5b115f9728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0

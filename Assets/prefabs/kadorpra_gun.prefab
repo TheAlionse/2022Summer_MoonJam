@@ -42,10 +42,14 @@ GameObject:
   - component: {fileID: 5991746039261970023}
   - component: {fileID: 5991746039261970017}
   - component: {fileID: 5991746039261970016}
+<<<<<<< Updated upstream
   - component: {fileID: 8736701106866099516}
+=======
+  - component: {fileID: 1418379088}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: kadorpra_gun
-  m_TagString: Untagged
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +110,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5540460f2824da148b48e2165bc7d373, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -132,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spoon: {fileID: 632239560102841435, guid: 9a4f53e777eb4bd4b9e07b01ec7b67b9, type: 3}
   bulletSpawn: {fileID: 5991746037799103221}
+<<<<<<< Updated upstream
   shoot_audio: {fileID: 8736701106866099516}
   velocity: 15
   size: 1
@@ -232,3 +237,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+=======
+  gunStats: {fileID: 1418379088}
+--- !u!114 &1418379088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5991746039261970022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9aa35486793a174697a3633263196b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  cooldown: 0
+  range_or_duration: 1
+  max_bullet_count: -1
+  velocity: 15
+  spread: -1
+  size: 2
+>>>>>>> Stashed changes

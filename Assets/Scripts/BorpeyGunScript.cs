@@ -6,32 +6,34 @@ public class BorpeyGunScript : MonoBehaviour
 {
     public GameObject bulletSpawn;
     public GameObject slash;
+    public GunStats gunStats;
 
-    bool disable_slash = false;
+    PlayerMoveTest script;
+    GameObject player;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
+        script = player.GetComponent<PlayerMoveTest>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Shoot()
     {
-        if (Input.GetMouseButtonDown(0) && !disable_slash)
-        {
-            StartCoroutine(shoot());
-        }
+        StartCoroutine(ShootFunction());
     }
 
-    IEnumerator shoot()
+    IEnumerator ShootFunction()
     {
-        disable_slash = true;
         GameObject slash_instance = Instantiate(slash, bulletSpawn.transform.position, Quaternion.identity);
+        slash_instance.GetComponent<BulletStats>().damage = gunStats.damage;
         slash_instance.transform.parent = gameObject.transform;
-        yield return new WaitForSeconds(0.23f);
-
+        if (!script.looking_right)
+        {
+            slash_instance.transform.eulerAngles = new Vector3(0,180,0);
+        }
+        yield return new WaitForSeconds(0.2f);
         Destroy(slash_instance);
-        disable_slash = false;
     }
 }

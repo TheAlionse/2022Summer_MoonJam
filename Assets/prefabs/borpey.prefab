@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4669048084464003732}
   - component: {fileID: 4669048084464003739}
   - component: {fileID: 4669048084464003733}
+  - component: {fileID: 1696255102}
   m_Layer: 0
   m_Name: borpey
-  m_TagString: Untagged
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +101,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawn: {fileID: 4669048085136872240}
   slash: {fileID: 8922053392797465284, guid: 5228aad039d9dbd478a6d90188c80ad9, type: 3}
+  gunStats: {fileID: 1696255102}
+--- !u!114 &1696255102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4669048084464003738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9aa35486793a174697a3633263196b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  cooldown: 0.23
+  range_or_duration: -1
+  max_bullet_count: -1
+  velocity: -1
+  spread: -1
+  size: -1
 --- !u!1 &4669048085136872240
 GameObject:
   m_ObjectHideFlags: 0

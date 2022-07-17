@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3489127981820759125}
   m_Layer: 0
   m_Name: cumbee
-  m_TagString: Untagged
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,4 +134,4 @@ MonoBehaviour:
   max_concurrent_bees: 10
   duration: 5
   velocity: 8
-  cooldown: 1
+  cooldown: 0.7

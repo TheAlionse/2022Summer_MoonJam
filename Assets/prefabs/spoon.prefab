@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8267654755624408554}
   - component: {fileID: 8015092939765140895}
   - component: {fileID: 5851021676209025325}
-  - component: {fileID: 2472769554800933725}
+  - component: {fileID: -4894825654156731641}
   m_Layer: 0
   m_Name: spoon
-  m_TagString: PlayerBullet
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +162,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &2472769554800933725
+--- !u!114 &-4894825654156731641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,8 +171,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 632239560102841435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1895b81a2294adc449ec161b3825c37f, type: 3}
+  m_Script: {fileID: 11500000, guid: ee6e6cf78d72c7641b47ef5b115f9728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  my_dmg: 3
-  destory_me: 1
+  damage: 0

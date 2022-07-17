@@ -14,12 +14,12 @@ public class PlayerMoveTest : MonoBehaviour
     public Camera cam;
     public Vector2 mouse_pos;
     public AudioSource dash_audio;
+    public bool looking_right = true;
 
     private Vector3 my_input;
     private float old_speed;
     private float dash_cool_down;
     private float cur_dash_time;
-    private bool looking_right = true;
     private Vector3 initialScale;
 
     private void Start()
