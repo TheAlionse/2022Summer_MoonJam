@@ -14,7 +14,7 @@ public class LightningBossFight : MonoBehaviour
     public GameObject bolt_attack_prefab;
     public GameObject lightning_rods_prefab;
     public GameObject lightning_connections_prefab;
-
+    public GameObject lightning_exit;
 
     private Renderer my_ren;
 
@@ -64,6 +64,7 @@ public class LightningBossFight : MonoBehaviour
             else if (health <= 0)
             {
                 Debug.Log("phase 3");
+                lightning_exit.SetActive(true);
                 //play death animation
                 Destroy(gameObject);
             }

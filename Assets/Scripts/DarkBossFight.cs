@@ -8,6 +8,7 @@ public class DarkBossFight : MonoBehaviour
     public float shadowball_force;
     public float speed;
     public GameObject shadowball_prefab;
+    public GameObject dark_exit;
 
     public AudioSource shadow_ball_audio;
     public AudioSource damage_audio;

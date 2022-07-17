@@ -21,6 +21,7 @@ public class CoomeliaFight : MonoBehaviour
     public GameObject futuresight_charge_prefab;
     public GameObject firepoint;
     public GameObject moonblast_prefab;
+    public GameObject cave_exit;
 
     public AudioSource charging_beam_audio;
     public AudioSource switch_sides_audio;
@@ -104,6 +105,7 @@ public class CoomeliaFight : MonoBehaviour
             {
                 Debug.Log("ded");
                 die_audio.Play();
+                cave_exit.SetActive(true);
                 //play death animation
                 move = false;
                 am_immune = true;
