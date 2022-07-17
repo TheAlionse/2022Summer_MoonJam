@@ -5,6 +5,7 @@ using UnityEngine;
 public class BadTestDMG : MonoBehaviour
 {
     PlayerHealth player_health;
+    public int dmg;
 
     private void Start()
     {
@@ -14,7 +15,7 @@ public class BadTestDMG : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            player_health.takeDamage(1);
+            player_health.takeDamage(dmg);
         }
     }
 }
