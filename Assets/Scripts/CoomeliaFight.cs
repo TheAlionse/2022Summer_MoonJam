@@ -33,19 +33,76 @@ public class CoomeliaFight : MonoBehaviour
     private int phase;
     private bool move;
     private bool stay;
+    private Renderer my_ren;
+
+    private bool am_immune;
+
+    private int phase_change1;
+    private int phase_change2;
 
     // Start is called before the first frame update
     void Start()
     {
+        am_immune = false;
+        phase_change1 = (int)(health * .6);
+        phase_change2 = (int)(health * .3);
         move = true;
         stay = true;
-        phase = 3;
+        phase = 1;
         cur_move = new Vector2(left_x, min_height);
         facing_right = true;
+        my_ren = gameObject.GetComponent<Renderer>();
         my_sprite = gameObject.GetComponent<SpriteRenderer>();
         StartCoroutine("FightRotation");
     }
 
+    
+    //TODO: UPDATE TO HANDLE WATERGUN
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerBullet") && !am_immune)
+        {
+            StartCoroutine("dmgImmune");
+            //update hp
+            health -= collision.GetComponent<PlayerBulletDMG>().give_dmg();
+            //change color?
+            StartCoroutine("amred");
+            //give temp immune?
+            //play audio
+            //update phase
+            if (health <= phase_change1 && phase == 1)
+            {
+                Debug.Log("phase 2");
+                phase = 2;
+            }
+            else if (health <= phase_change2 && phase == 2)
+            {
+                Debug.Log("phase 3");
+                phase = 3;
+            }
+            else if (health <= 0)
+            {
+                Debug.Log("phase 3");
+                //play death animation
+                Destroy(gameObject);
+            }
+            Debug.Log(health);
+        }
+    }
+
+    IEnumerator dmgImmune()
+    {
+        am_immune = true;
+        yield return new WaitForSeconds(.5f);
+        am_immune = false;
+    }
+
+    IEnumerator amred()
+    {
+        my_ren.material.color = new Color(.5f, 0f, 0f, 1f);
+        yield return new WaitForSeconds(.2f);
+        my_ren.material.color = new Color(1f, 1f, 1f, 1f);
+    }
     private void FixedUpdate()
     {
         if (move)
@@ -64,6 +121,7 @@ public class CoomeliaFight : MonoBehaviour
             }
         }
     }
+
     IEnumerator FightRotation()
     {
         yield return new WaitForSeconds(2f);
@@ -222,7 +280,6 @@ public class CoomeliaFight : MonoBehaviour
         }
 
         int yval = future_yposs[Random.Range(0, 3)];
-        Debug.Log(yval);
 
         yield return new WaitForSeconds(2f);
         //maybe make fade in?
