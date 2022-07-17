@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spoon: {fileID: 632239560102841435, guid: 9a4f53e777eb4bd4b9e07b01ec7b67b9, type: 3}
-  bulletSpawn: {fileID: 0}
+  bulletSpawn: {fileID: 5991746037799103221}
   velocity: 15
   size: 1
   range: 2
