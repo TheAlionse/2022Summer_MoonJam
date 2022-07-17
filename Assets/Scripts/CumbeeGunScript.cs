@@ -7,10 +7,13 @@ public class CumbeeGunScript : MonoBehaviour
 
     public GameObject cumbee_bullet;
     public GameObject bulletSpawn;
-
+    public int max_concurrent_bees;
     public float duration = 5;
-
     public float velocity = 8;
+    public float cooldown;
+
+    int current_bee_count;
+    float cooldown_timestamp;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +24,7 @@ public class CumbeeGunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && current_bee_count <= max_concurrent_bees && cooldown_timestamp <= Time.time)
         {
             StartCoroutine(shoot());
         }
@@ -29,6 +32,8 @@ public class CumbeeGunScript : MonoBehaviour
 
     IEnumerator shoot()
     {
+        cooldown_timestamp = Time.time + cooldown;
+        current_bee_count++;
         GameObject bullet = Instantiate(cumbee_bullet, bulletSpawn.transform.position, Quaternion.identity);
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePosition - (Vector2)transform.position;
@@ -42,5 +47,10 @@ public class CumbeeGunScript : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         Destroy(bullet);
+    }
+
+    void BeeDestroyed()
+    {
+        current_bee_count--;
     }
 }

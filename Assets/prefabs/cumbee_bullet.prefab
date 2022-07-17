@@ -103,6 +103,7 @@ MonoBehaviour:
   oscillate_scale: 0.1
   speed: 5
   angleChangingSpeed: 100
+  max_homing_latch_angle: 60
   pull_strength: 0.3
 --- !u!60 &-8031896219453381739
 PolygonCollider2D:

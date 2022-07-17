@@ -9,10 +9,12 @@ public class CumbeeBulletScript : MonoBehaviour
     float timer;
     public float speed;
     public float angleChangingSpeed;
+    public float max_homing_latch_angle;
 
 
     public float pull_strength = 1f;
 
+    bool ignore_homing = false;
     GameObject target;
     Rigidbody2D rb;
 
@@ -35,16 +37,25 @@ public class CumbeeBulletScript : MonoBehaviour
         Vector2 direction = (Vector2)target.transform.position - rb.position;
         gameObject.transform.Translate(0, oscillate(timer, oscillate_speed, oscillate_scale),0);
 
-        if(!V2Equals(direction, rb.velocity))
+        if(!ignore_homing)
         {
-            direction.Normalize();
-            Vector2 velocity = rb.velocity + (direction * pull_strength);
-            rb.velocity = velocity.normalized * speed;
+            if (Mathf.Abs(Vector2.Angle(direction, rb.velocity)) < max_homing_latch_angle)
+            {
+                if (!V2Equals(direction, rb.velocity))
+                {
+                    direction.Normalize();
+                    Vector2 velocity = rb.velocity + (direction * pull_strength);
+                    rb.velocity = velocity.normalized * speed;
+                }
+
+                float rotateAmount = Vector3.Cross(Vector2.Perpendicular(direction), transform.up).z;
+                rb.angularVelocity = -angleChangingSpeed * rotateAmount;
+            }
+            else
+            {
+                ignore_homing = true;
+            }
         }
-
-        float rotateAmount = Vector3.Cross(Vector2.Perpendicular(direction), transform.up).z;
-        rb.angularVelocity = -angleChangingSpeed * rotateAmount;
-
     }
 
     float oscillate(float time, float speed, float scale)
@@ -75,5 +86,18 @@ public class CumbeeBulletScript : MonoBehaviour
     bool V2Equals(Vector2 lhs, Vector2 rhs)
     {
         return Vector2.SqrMagnitude(lhs - rhs) < 9.99999944E-11f;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        GameObject.Find("cumbee").SendMessage("BeeDestroyed");
     }
 }

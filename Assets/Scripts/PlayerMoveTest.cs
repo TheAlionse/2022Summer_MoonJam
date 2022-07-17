@@ -18,12 +18,15 @@ public class PlayerMoveTest : MonoBehaviour
     private float old_speed;
     private float dash_cool_down;
     private float cur_dash_time;
+    private bool looking_right = true;
+    private Vector3 initialScale;
 
     private void Start()
     {
         old_speed = speed;
         Vector2 cursor_offset = new Vector2(crosshair.width / 2, crosshair.height / 2);
         Cursor.SetCursor(crosshair, cursor_offset, CursorMode.Auto);
+        initialScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -59,10 +62,18 @@ public class PlayerMoveTest : MonoBehaviour
         rb.MovePosition(transform.position + my_input * Time.deltaTime * speed);
 
         //might not want player to look at cursor?
-        //Vector2 look_dir = mouse_pos - rb.position;
-        //float angle = Mathf.Atan2(look_dir.y, look_dir.x) * Mathf.Rad2Deg;
-        //rb.rotation = angle;
+        var delta = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        if (delta.x >= 0 && !looking_right)
+        {
+            transform.localScale = initialScale;
+            looking_right = true;
+        }
+        else if(delta.x < 0 && looking_right)
+        {
+            transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
+            looking_right = false;
+        }
     }
 
-    
+
 }
