@@ -6,6 +6,7 @@ public class kadorpra_gun_script : MonoBehaviour
 {
     public GameObject spoon;
     public GameObject bulletSpawn;
+    public AudioSource shoot_audio;
     public float velocity = 15;
     public float size = 2;
     public float range = 1;
@@ -26,6 +27,7 @@ public class kadorpra_gun_script : MonoBehaviour
 
     IEnumerator shoot()
     {
+        shoot_audio.Play();
         GameObject bullet = Instantiate(spoon, bulletSpawn.transform.position, Quaternion.identity);
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePosition - (Vector2)transform.position;

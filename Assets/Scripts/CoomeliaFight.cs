@@ -22,6 +22,17 @@ public class CoomeliaFight : MonoBehaviour
     public GameObject firepoint;
     public GameObject moonblast_prefab;
 
+    public AudioSource charging_beam_audio;
+    public AudioSource switch_sides_audio;
+    public AudioSource firing_beam_audio;
+    public AudioSource blade_storm_audio;
+    public AudioSource aoe_charge_audio;
+    public AudioSource aoe_cast_audio;
+    public AudioSource run_billy_run;
+    public AudioSource die_audio;
+    public AudioSource take_damage_audio;
+    public AudioSource spawn_audio;
+
     private Vector2 cur_move;
     private float max_height = -25;
     private float min_height = -55;
@@ -59,6 +70,11 @@ public class CoomeliaFight : MonoBehaviour
         StartCoroutine("FightRotation");
     }
 
+    void OnEnable()
+    {
+        spawn_audio.Play();
+    }
+
     
     //TODO: UPDATE TO HANDLE WATERGUN
     private void OnTriggerStay2D(Collider2D collision)
@@ -67,6 +83,7 @@ public class CoomeliaFight : MonoBehaviour
         {
             StartCoroutine("dmgImmune");
             //update hp
+            take_damage_audio.Play();
             health -= collision.GetComponent<PlayerBulletDMG>().give_dmg();
             //change color?
             StartCoroutine("amred");
@@ -86,6 +103,7 @@ public class CoomeliaFight : MonoBehaviour
             else if (health <= 0)
             {
                 Debug.Log("ded");
+                die_audio.Play();
                 //play death animation
                 move = false;
                 am_immune = true;
@@ -211,6 +229,7 @@ public class CoomeliaFight : MonoBehaviour
 
     private void switchsides()
     {
+        switch_sides_audio.Play();
         float x_val = 0;
         if (facing_right)
             x_val = right_x;
@@ -232,6 +251,7 @@ public class CoomeliaFight : MonoBehaviour
 
     private void psychocut()
     {
+        blade_storm_audio.Play();
         int angle_offcycle = 0;
         if (psychocut_offcycle)
         {
@@ -270,9 +290,11 @@ public class CoomeliaFight : MonoBehaviour
     {
         move = false;
         Vector3 player_pos = GameObject.FindWithTag("Player").transform.position;
+        charging_beam_audio.Play();
         GameObject warning = Instantiate(aurorabeam_warning_prefab.gameObject, transform);
         lookat(player_pos, warning.transform);
         yield return new WaitForSeconds(1f);
+        firing_beam_audio.Play();
         GameObject beam = Instantiate(aurorabeam_hit_prefab, transform);
         Destroy(warning);
         lookat(player_pos, beam.transform);
@@ -284,6 +306,7 @@ public class CoomeliaFight : MonoBehaviour
     IEnumerator futuresight()
     {
         float xval = future_leftx_coord;
+        aoe_charge_audio.Play();
         GameObject charge = Instantiate(futuresight_charge_prefab, transform);
         if (!facing_right)
         {
@@ -295,6 +318,7 @@ public class CoomeliaFight : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         //maybe make fade in?
+        aoe_cast_audio.Play();
         GameObject warning = Instantiate(futuresight_warning_prefab);
         warning.transform.position = new Vector2(xval, yval);
         yield return new WaitForSeconds(2f);
@@ -312,6 +336,7 @@ public class CoomeliaFight : MonoBehaviour
 
     private void moonblast() //dmg
     {
+        run_billy_run.Play();
         Vector3 player_pos = GameObject.FindWithTag("Player").transform.position;
         GameObject moonblast = Instantiate(moonblast_prefab);
         moonblast.transform.position = firepoint.transform.position;

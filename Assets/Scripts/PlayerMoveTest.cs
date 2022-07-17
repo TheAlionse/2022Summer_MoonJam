@@ -13,6 +13,7 @@ public class PlayerMoveTest : MonoBehaviour
     public Texture2D crosshair;
     public Camera cam;
     public Vector2 mouse_pos;
+    public AudioSource dash_audio;
 
     private Vector3 my_input;
     private float old_speed;
@@ -37,6 +38,7 @@ public class PlayerMoveTest : MonoBehaviour
 
         if(Input.GetKeyDown(dash_key) & dash_cool_down <= 0)
         {
+            dash_audio.Play();
             this.speed = this.speed * dash_speed;
             dash_cool_down = dash_cd_reset;
             cur_dash_time = 0;

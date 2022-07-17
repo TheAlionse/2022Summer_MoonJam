@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
     public int max_health;
     public HealthBar health_bar;
 
+    public AudioSource take_damage_audio;
+
     private bool immune = false;
 
 
@@ -21,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (immune == false)
         {
+            take_damage_audio.Play();
             player_health -= dmg;
             health_bar.SetHealth(player_health);
             StartCoroutine(dmgImmune());
