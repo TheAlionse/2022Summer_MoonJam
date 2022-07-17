@@ -128,11 +128,12 @@ MonoBehaviour:
   health: 100
   max_static_size: 8
   smoothTime: 2
-  bolt_force: 5
+  bolt_force: 15
   lightning_ring_prefab: {fileID: 4650135533609804014}
-  bolt_attack_prefab: {fileID: 0}
+  bolt_warning_prefab: {fileID: 6641908548821079240, guid: ace2f7bce79de9f4480b9eeec4c303f2, type: 3}
+  bolt_attack_prefab: {fileID: 6452906392020516404, guid: 034741b9ef166264d8d49a0d0c22dd77, type: 3}
   lightning_rods_prefab: {fileID: 6299632763223157419, guid: 554e1e3111048534aaaf5c1dd30e568d, type: 3}
-  lightning_connections_prefab: {fileID: 0}
+  lightning_connections_prefab: {fileID: 6452906392020516404, guid: 034741b9ef166264d8d49a0d0c22dd77, type: 3}
 --- !u!1 &4650135533609804014
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +209,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -2134443355, guid: 07691bc23a5b16142a3073883b7bfd41, type: 3}
   m_Color: {r: 0.94108486, g: 0.9528302, b: 0.56181026, a: 0.5882353}
   m_FlipX: 0
   m_FlipY: 0

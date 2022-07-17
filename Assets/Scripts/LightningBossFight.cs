@@ -10,6 +10,7 @@ public class LightningBossFight : MonoBehaviour
 
     public float bolt_force;
     public GameObject lightning_ring_prefab;
+    public GameObject bolt_warning_prefab;
     public GameObject bolt_attack_prefab;
     public GameObject lightning_rods_prefab;
     public GameObject lightning_connections_prefab;
@@ -18,7 +19,7 @@ public class LightningBossFight : MonoBehaviour
     private Renderer my_ren;
 
     private bool am_immune;
-    private int phase = 2;
+    private int phase = 1;
     private int phase_change1;
     private int phase_change2;
 
@@ -28,6 +29,8 @@ public class LightningBossFight : MonoBehaviour
 
     private void Start()
     {
+        phase_change1 = (int)(health * .7);
+        phase_change2 = (int)(health * .4);
         am_immune = false;
         my_ren = my_ren = gameObject.GetComponent<Renderer>();
         StartCoroutine("LightningFight");
@@ -99,20 +102,24 @@ public class LightningBossFight : MonoBehaviour
 
     IEnumerator LightningFight()
     {
-        if(phase == 1)
+        yield return new WaitForSeconds(2f);
+        if (phase == 1)
         {
             //bolt attack
-            boltattack();
-            yield return new WaitForSeconds(5f);
+            StartCoroutine("boltattack");
+            yield return new WaitForSeconds(2f);
         }
         else if(phase == 2){
             //lightning rods
             lightningrods();
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(2f);
+            StartCoroutine("boltattack");
+            yield return new WaitForSeconds(1f);
         }
         else if (phase == 3)
         {
-            //connected to lightning rods
+            lightningrods();
+            yield return new WaitForSeconds(1.5f);
         }
         yield return new WaitForSeconds(1f);
         StartCoroutine("LightningFight");
@@ -125,14 +132,19 @@ public class LightningBossFight : MonoBehaviour
         my_trans.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
-    public void boltattack()
+    IEnumerator boltattack()
     {
         Vector3 player_pos = GameObject.FindWithTag("Player").transform.position;
-        GameObject bolts = Instantiate(bolt_attack_prefab);
-        //TODO: Add small margin of random
-        lookat(player_pos, bolts.transform);
-        bolts.GetComponent<Rigidbody2D>().AddForce((player_pos - bolts.transform.position) * bolt_force);
+        GameObject warning = Instantiate(bolt_warning_prefab.gameObject, transform);
+        lookat(player_pos, warning.transform);
+        yield return new WaitForSeconds(.75f);
+        GameObject beam = Instantiate(bolt_attack_prefab, transform);
+        Destroy(warning);
+        lookat(player_pos, beam.transform);
+        yield return new WaitForSeconds(1.5f);
+        Destroy(beam);
     }
+
     public void lightningrods()
     {
         Debug.Log("rod");
@@ -141,9 +153,9 @@ public class LightningBossFight : MonoBehaviour
         //Y 270 245
         float x_rng = Random.Range(-235, -202);
         float y_rng = Random.Range(245, 270);
-        GameObject rods = Instantiate(lightning_rods_prefab);
-        rods.transform.position = gameObject.transform.position;
+        GameObject rod = Instantiate(lightning_rods_prefab);
+        rod.transform.position = gameObject.transform.position;
         //give bolts rng pos
-        rods.GetComponent<RodMovement>().giveCoord(x_rng, y_rng);
+        rod.GetComponent<RodMovement>().giveCoord(x_rng, y_rng, phase,  gameObject);
     }
 }
