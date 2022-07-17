@@ -17,8 +17,6 @@ public class HealthBar : MonoBehaviour
         width = 330;
 
         hp_fill = root.Q<VisualElement>("Fill");
-
-        Debug.Log(hp_fill.style);
     }
 
     public void SetHealth(int health)
