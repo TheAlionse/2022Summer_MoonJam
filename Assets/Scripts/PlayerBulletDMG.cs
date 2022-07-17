@@ -19,7 +19,7 @@ public class PlayerBulletDMG : MonoBehaviour
 
     IEnumerator killme()
     {
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.05f);
         Destroy(gameObject);
     }
 }

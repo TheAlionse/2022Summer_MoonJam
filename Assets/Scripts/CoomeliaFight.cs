@@ -35,7 +35,10 @@ public class CoomeliaFight : MonoBehaviour
     private bool stay;
     private Renderer my_ren;
 
+    private float currentVelocity;
+    private float smoothTime = 2f;
     private bool am_immune;
+    private bool kill_me;
 
     private int phase_change1;
     private int phase_change2;
@@ -44,8 +47,8 @@ public class CoomeliaFight : MonoBehaviour
     void Start()
     {
         am_immune = false;
-        phase_change1 = (int)(health * .6);
-        phase_change2 = (int)(health * .3);
+        phase_change1 = (int)(health * .7);
+        phase_change2 = (int)(health * .4);
         move = true;
         stay = true;
         phase = 1;
@@ -82,14 +85,16 @@ public class CoomeliaFight : MonoBehaviour
             }
             else if (health <= 0)
             {
-                Debug.Log("phase 3");
+                Debug.Log("ded");
                 //play death animation
-                Destroy(gameObject);
+                move = false;
+                am_immune = true;
+                StopCoroutine("FightRotation");
+                kill_me = true;
             }
             Debug.Log(health);
         }
     }
-
     IEnumerator dmgImmune()
     {
         am_immune = true;
@@ -105,7 +110,7 @@ public class CoomeliaFight : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (move)
+        if (move && !kill_me)
         {
             transform.position = Vector3.MoveTowards(gameObject.transform.position, cur_move, speed * Time.deltaTime);
             if (Vector3.Distance(gameObject.transform.position, cur_move) < 0.01f)
@@ -118,6 +123,15 @@ public class CoomeliaFight : MonoBehaviour
                 {
                     cur_move.y = max_height;
                 }
+            }
+        }
+        else if (kill_me)
+        {
+            float cur_scale = Mathf.SmoothDamp(gameObject.transform.localScale.x, 0, ref currentVelocity, smoothTime);
+            gameObject.transform.localScale = new Vector3(cur_scale, cur_scale, 1);
+            if (cur_scale < .001f)
+            {
+                Destroy(gameObject);
             }
         }
     }
@@ -137,10 +151,8 @@ public class CoomeliaFight : MonoBehaviour
             StartCoroutine("aurorabeam");
             yield return new WaitForSeconds(5f);
         }
-
-
         //phase 2
-        if(phase == 2)
+        else if(phase == 2)
         {
             //double team //spawn fake that also uses abilities low hp(transition)
             //aurora beam
@@ -161,7 +173,7 @@ public class CoomeliaFight : MonoBehaviour
         }
 
         //phase 3
-        if (phase == 3)
+        else if (phase == 3)
         {
             //double team(transition)
             //moon beam (transition) (heal)
