@@ -300,7 +300,7 @@ public class CoomeliaFight : MonoBehaviour
 
     private void moonblast() //dmg
     {
-            Vector3 player_pos = GameObject.FindWithTag("Player").transform.position;
+        Vector3 player_pos = GameObject.FindWithTag("Player").transform.position;
         GameObject moonblast = Instantiate(moonblast_prefab);
         moonblast.transform.position = firepoint.transform.position;
         lookat(player_pos, moonblast.transform);
