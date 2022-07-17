@@ -27,6 +27,9 @@ public class LightningBossFight : MonoBehaviour
     private float cur_scale_target = 0;
     private bool bigger = false;
 
+    private int maxCount = 3;
+    private int curCount = 0;
+
     private void Start()
     {
         phase_change1 = (int)(health * .7);
@@ -102,6 +105,7 @@ public class LightningBossFight : MonoBehaviour
 
     IEnumerator LightningFight()
     {
+        curCount++;
         yield return new WaitForSeconds(2f);
         if (phase == 1)
         {
@@ -123,6 +127,12 @@ public class LightningBossFight : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         StartCoroutine("LightningFight");
+
+        if(curCount >= maxCount)
+        {
+            myMove();
+            curCount = 0;
+        }
     }
 
     private void lookat(Vector3 player_pos, Transform my_trans)
@@ -143,6 +153,17 @@ public class LightningBossFight : MonoBehaviour
         lookat(player_pos, beam.transform);
         yield return new WaitForSeconds(1.5f);
         Destroy(beam);
+    }
+
+    private void myMove()
+    {
+        //X -202 -234 
+        int[] xposs = new int[] { -202, -234 };
+        //Y 270 245
+        int[] yposs = new int[] {270, 245};
+        float x_rng = xposs[Random.Range(0, 2)];
+        float y_rng = yposs[Random.Range(0, 2)];
+        gameObject.transform.position = new Vector2(x_rng, y_rng); 
     }
 
     public void lightningrods()
