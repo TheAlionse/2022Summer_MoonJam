@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 3489127981820759126}
   - component: {fileID: 3489127981820759124}
   - component: {fileID: 3489127981820759125}
+  - component: {fileID: 4065155389887327984}
   m_Layer: 0
   m_Name: cumbee
   m_TagString: Gun
@@ -56,7 +57,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3489127981820759127}
-  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
   m_LocalPosition: {x: 0.5700002, y: -0.44000006, z: 0}
   m_LocalScale: {x: 0.2377208, y: 0.2377208, z: 1}
   m_ConstrainProportionsScale: 0
@@ -131,7 +132,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cumbee_bullet: {fileID: 7672356971844622926, guid: d6a6e9a20e35ebd40a9ea1120acd9d20, type: 3}
   bulletSpawn: {fileID: 3489127980765865299}
-  max_concurrent_bees: 10
-  duration: 5
-  velocity: 8
+  gunStats: {fileID: 4065155389887327984}
+--- !u!114 &4065155389887327984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489127981820759127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9aa35486793a174697a3633263196b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
   cooldown: 0.7
+  range_or_duration: 5
+  max_bullet_count: 10
+  velocity: 8
+  spread: -1
+  size: 1

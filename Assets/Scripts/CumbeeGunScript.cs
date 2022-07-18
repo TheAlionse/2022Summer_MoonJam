@@ -7,44 +7,37 @@ public class CumbeeGunScript : MonoBehaviour
 
     public GameObject cumbee_bullet;
     public GameObject bulletSpawn;
-    public int max_concurrent_bees;
-    public float duration = 5;
-    public float velocity = 8;
-    public float cooldown;
+    public GunStats gunStats;
+
+    //public int max_concurrent_bees;
+    //public float duration = 5;
+    //public float velocity = 8;
 
     int current_bee_count;
-    float cooldown_timestamp;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Shoot()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0) && current_bee_count <= max_concurrent_bees && cooldown_timestamp <= Time.time)
+        if (current_bee_count <= gunStats.max_bullet_count)
         {
-            StartCoroutine(shoot());
+            StartCoroutine(ShootFunction());
         }
     }
 
-    IEnumerator shoot()
+    IEnumerator ShootFunction()
     {
-        cooldown_timestamp = Time.time + cooldown;
         current_bee_count++;
         GameObject bullet = Instantiate(cumbee_bullet, bulletSpawn.transform.position, Quaternion.identity);
+        bullet.GetComponent<BulletStats>().damage = gunStats.damage;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePosition - (Vector2)transform.position;
         direction.Normalize();
 
-        bullet.GetComponent<Rigidbody2D>().velocity = direction * velocity;
+        bullet.GetComponent<Rigidbody2D>().velocity = direction * gunStats.velocity;
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(gunStats.range_or_duration);
 
         Destroy(bullet);
     }

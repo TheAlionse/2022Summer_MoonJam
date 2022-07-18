@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - PlayerBullet
   - Gun
+  - PlayerProjectile
+  - Walls
+  - WaterBeam
   layers:
   - Default
   - TransparentFX

@@ -25,12 +25,6 @@ public class CumbeeBulletScript : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         timer += Time.deltaTime;
@@ -69,8 +63,7 @@ public class CumbeeBulletScript : MonoBehaviour
         gos = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject closest = null;
         float distance = Mathf.Infinity;
-        Vector3 position = Input.mousePosition;
-        foreach (GameObject go in gos)
+        Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition); foreach (GameObject go in gos)
         {
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;
@@ -80,20 +73,13 @@ public class CumbeeBulletScript : MonoBehaviour
                 distance = curDistance;
             }
         }
+        Debug.Log(closest.gameObject.name);
         return closest;
     }
 
     bool V2Equals(Vector2 lhs, Vector2 rhs)
     {
         return Vector2.SqrMagnitude(lhs - rhs) < 9.99999944E-11f;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            Destroy(gameObject);
-        }
     }
 
     private void OnDestroy()

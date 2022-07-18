@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 6792916752006270098}
   - component: {fileID: 6792916752006270188}
   - component: {fileID: 6792916752006270189}
+  - component: {fileID: 6098810289262257029}
   m_Layer: 0
   m_Name: coomdra
   m_TagString: Gun
@@ -56,7 +57,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6792916752006270099}
-  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: 1.0500001, y: -0.09000015, z: 0}
   m_LocalScale: {x: 0.2377208, y: 0.2377208, z: 1}
   m_ConstrainProportionsScale: 0
@@ -134,8 +135,23 @@ MonoBehaviour:
   - {fileID: 8649324980867330737, guid: a34e2894ce06e634dab548fb12903a0f, type: 3}
   - {fileID: 8372557104215013059, guid: 63f13962ab0b2b6488b59833c8e28501, type: 3}
   bulletSpawn: {fileID: 6792916751782726975}
+  gunStats: {fileID: 6098810289262257029}
+--- !u!114 &6098810289262257029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6792916752006270099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9aa35486793a174697a3633263196b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  cooldown: 0.5
+  range_or_duration: 0.2
+  max_bullet_count: 10
   velocity: 25
-  range: 0.2
-  size: 2
-  bullet_count: 10
   spread: 50
+  size: 1

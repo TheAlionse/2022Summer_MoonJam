@@ -47,15 +47,26 @@ public class KadorpraAIScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerProjectile")
         {
-            Debug.Log("hit");
             float damage = collision.gameObject.GetComponent<BulletStats>().damage;
             health -= damage;
             StartCoroutine(TakeDamage());
-            Debug.Log(health);
             if (health <= 0)
             {
                 Destroy(gameObject);
-                Debug.Log("kadropra dead");
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "WaterBeam")
+        {
+            float damage = collision.gameObject.GetComponent<BulletStats>().damage;
+            health -= damage;
+            StartCoroutine(TakeDamage());
+            if (health <= 0)
+            {
+                Destroy(gameObject);
             }
         }
     }

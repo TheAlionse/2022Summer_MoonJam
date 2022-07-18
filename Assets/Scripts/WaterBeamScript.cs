@@ -5,9 +5,10 @@ using UnityEngine;
 public class WaterBeamScript : MonoBehaviour
 {
 
-    public float max_length = 40f;
-    public float speed = 200f;
-    public float acceleration = 500f;
+    public float max_length;
+    public float speed;
+    public float acceleration;
+    public SpriteRenderer renderer;
 
     float initial_speed;
 
@@ -20,12 +21,11 @@ public class WaterBeamScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.transform.localScale.x < max_length)
+        if (renderer.size.x < max_length)
         {
-            Debug.Log("increasing");
-            Vector3 rescale = gameObject.transform.localScale;
-            rescale.x += speed * Time.deltaTime;
-            gameObject.transform.localScale = rescale;
+            float rescale = renderer.size.x;
+            rescale += speed * Time.deltaTime;
+            renderer.size = new Vector2(rescale, 0.625f);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -43,36 +43,16 @@ public class WaterBeamScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.layer);
-        if(collision.gameObject.layer == LayerMask.NameToLayer("enemy") || collision.gameObject.layer == LayerMask.NameToLayer("Walls"))
+        if(collision.gameObject.tag == "Enemy")
         {
             var collisionPoint = collision.ClosestPoint(transform.position);
             var distance = Vector2.Distance(collisionPoint, transform.position);
 
-            float size = gameObject.GetComponent<Renderer>().bounds.size.x;
-            Vector3 rescale = gameObject.transform.localScale;
-
-            rescale.x = distance * rescale.x / size;
-            if (rescale.x > max_length)
-                rescale.x = max_length;
-            gameObject.transform.localScale = rescale;
+            if(distance > max_length)
+            {
+                distance = max_length;
+            }
+            renderer.size = new Vector2(distance, 0.625f);
         }
     }
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.layer == LayerMask.NameToLayer("enemy") || collision.gameObject.layer == LayerMask.NameToLayer("Walls"))
-    //    {
-    //        var collisionPoint = collision.ClosestPoint(transform.position);
-    //        var distance = Vector2.Distance(collisionPoint, transform.position);
-
-    //        float size = gameObject.GetComponent<Renderer>().bounds.size.x;
-    //        Vector3 rescale = gameObject.transform.localScale;
-
-    //        rescale.x = distance * rescale.x / size;
-    //        if (rescale.x > default_length.x)
-    //            rescale.x = default_length.x;
-    //        gameObject.transform.localScale = rescale;
-    //    }
-    //}
 }

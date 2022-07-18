@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 6833577387929562440}
   - component: {fileID: -8031896219453381739}
   - component: {fileID: 7748394201153444815}
+  - component: {fileID: 2259206157745198114}
+  - component: {fileID: -3675502741380192871}
   m_Layer: 0
   m_Name: cumbee_bullet
-  m_TagString: PlayerBullet
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +105,7 @@ MonoBehaviour:
   oscillate_scale: 0.1
   speed: 5
   angleChangingSpeed: 100
-  max_homing_latch_angle: 60
+  max_homing_latch_angle: 80
   pull_strength: 0.3
 --- !u!60 &-8031896219453381739
 PolygonCollider2D:
@@ -338,3 +340,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &2259206157745198114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672356971844622926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6e6cf78d72c7641b47ef5b115f9728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+--- !u!114 &-3675502741380192871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672356971844622926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d143e031271345f49906cc7dab29d251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

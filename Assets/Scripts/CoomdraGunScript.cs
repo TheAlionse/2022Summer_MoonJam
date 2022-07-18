@@ -6,43 +6,29 @@ public class CoomdraGunScript : MonoBehaviour
 {
     public GameObject[] cooms;
     public GameObject bulletSpawn;
+    public GunStats gunStats;
 
-    public float velocity = 25;
-    public float range = 0.25f;
-    public float size = 1;
-    public int bullet_count = 6;
-    public float spread = 80f;
-
-    // Start is called before the first frame update
-    void Start()
+    public void Shoot()
     {
-        
+        StartCoroutine(ShootFunction());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartCoroutine(shoot());
-        }
-    }
-
-    IEnumerator shoot()
+    IEnumerator ShootFunction()
     {
 
-        GameObject[] bullets = new GameObject[bullet_count];
+        GameObject[] bullets = new GameObject[gunStats.max_bullet_count];
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePosition - (Vector2)transform.position;
         direction.Normalize();
 
-        for (int i = 0; i < bullet_count; i++)
+        for (int i = 0; i < gunStats.max_bullet_count; i++)
         {
             GameObject coom = cooms[Random.Range(0, cooms.Length)];
             GameObject bullet = Instantiate(coom, bulletSpawn.transform.position, Quaternion.identity);
-            Vector2 random_direction = Rotate(direction, Random.Range(-spread / 2, spread / 2));
-            bullet.GetComponent<Rigidbody2D>().velocity = random_direction * velocity;
-            bullet.transform.localScale = bullet.transform.localScale * size;
+            bullet.GetComponent<BulletStats>().damage = gunStats.damage;
+            Vector2 random_direction = Rotate(direction, Random.Range(-gunStats.spread / 2, gunStats.spread / 2));
+            bullet.GetComponent<Rigidbody2D>().velocity = random_direction * gunStats.velocity;
+            bullet.transform.localScale = bullet.transform.localScale * gunStats.size;
             float angle = Mathf.Atan2(random_direction.y, random_direction.x) * Mathf.Rad2Deg;
             bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             bullets[i] = bullet;
@@ -51,9 +37,9 @@ public class CoomdraGunScript : MonoBehaviour
 
 
 
-        yield return new WaitForSeconds(range);
+        yield return new WaitForSeconds(gunStats.range_or_duration);
 
-        for(int i = 0; i < bullet_count; i++)
+        for(int i = 0; i < gunStats.max_bullet_count; i++)
         {
             Destroy(bullets[i]);
         }
