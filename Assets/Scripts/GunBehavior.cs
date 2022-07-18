@@ -18,12 +18,15 @@ public class GunBehavior : MonoBehaviour
     int special_gun_counter = 0;
     int last_gun_index = 0;
     Coroutine coroutine;
+
+    public Inventory my_inventory;
+
     // Start is called before the first frame update
     void Start()
     {
         GameObject[] guns = GameObject.FindGameObjectsWithTag("Gun");
 
-        foreach(GameObject gun in guns)
+        foreach (GameObject gun in guns)
         {
             if (gun.active)
             {
@@ -96,6 +99,7 @@ public class GunBehavior : MonoBehaviour
 
         if(guns.Count >= 2)
         {
+            my_inventory.TurnOnWeaponTimer();
             coroutine = StartCoroutine(RandomizeGun());
         }
     }
@@ -121,6 +125,33 @@ public class GunBehavior : MonoBehaviour
 
     void EquipGun(GameObject new_gun)
     {
+        string mygun = getcurgun();
+        //CumBee, Kadorpra, Hemoroaid, Coomelia, Borpey, Coomdra
+        if (mygun == "borpey")
+        {
+            my_inventory.SetInventorySlotToWeapon(1, Inventory.Weapon.Borpey);
+        }
+        else if(mygun == "cumbee")
+        {
+            my_inventory.SetInventorySlotToWeapon(1, Inventory.Weapon.CumBee);
+        }
+        else if (mygun == "Coomelia")
+        {
+            my_inventory.SetInventorySlotToWeapon(1, Inventory.Weapon.Coomelia);
+        }
+        else if (mygun == "hemorald")
+        {
+            my_inventory.SetInventorySlotToWeapon(1, Inventory.Weapon.Hemoroaid);
+        }
+        else if (mygun == "coomdra")
+        {
+            my_inventory.SetInventorySlotToWeapon(1, Inventory.Weapon.Coomdra);
+        }
+        else if (mygun == "kadorpra")
+        {
+            my_inventory.SetInventorySlotToWeapon(1, Inventory.Weapon.Kadorpra);
+        }
+
         gunObject = Instantiate(new_gun, transform.position, Quaternion.identity);
         gunObject.transform.parent = gameObject.transform.parent.transform;
         gunStats = gunObject.GetComponent<GunStats>();
@@ -147,14 +178,22 @@ public class GunBehavior : MonoBehaviour
         {
             if (last_gun_index == -1)
             {
+                StartCoroutine(my_inventory.StartWeaponRotateCountdown((int)specialGunSwapCooldown));
                 yield return new WaitForSeconds(specialGunSwapCooldown);
             }
             else
             {
+                StartCoroutine(my_inventory.StartWeaponRotateCountdown((int)gunSwapCooldown));
                 yield return new WaitForSeconds(gunSwapCooldown);
             }
 
             SwapGun();
         }
+    }
+
+    public string getcurgun()
+    {
+        GameObject mygun = guns[last_gun_index];
+        return guns[last_gun_index].name;
     }
 }

@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour
         timer_fill_bg.style.display = DisplayStyle.Flex;
     }
 
-    IEnumerator StartWeaponRotateCountdown(int timeInSeconds)
+    public IEnumerator StartWeaponRotateCountdown(int timeInSeconds)
     {
         for (int i = 1; i <= timeInSeconds * 2; i++)
         {
