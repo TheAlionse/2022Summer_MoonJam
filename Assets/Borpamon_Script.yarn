@@ -13,7 +13,9 @@ tags:
 ---
 <<stopmove>>
 Croak: Oh Purple, I am glad you were able to make it!
-Croak: Here I have just the thing for you take this.
+<<flip corpa>>
+Croak: Here I have just the thing, go and grab that Borpey over there.
+<<gun1>>
 <<resumemove>>
 ===
 
@@ -75,6 +77,7 @@ Lightning Gym Leader: Hopefully you can actually provide some entertainment.
 
 title: LegenedFightEnter
 ---
+<<stopmove>>
 <<wait 1>>
 Owww... Where am I?
 W-What is that?
@@ -100,6 +103,13 @@ Scope Creep: Now wake up and return back to your normal word.
 <<fadeout>>
 <<stopmove>>
 <<loadscene CreditScene>>
+===
+
+title: GorpaFake
+---
+<<stopmove>>
+Gorpa: The water is so beautiful...
+<<resumemove>>
 ===
 
 title: GorpaBonus

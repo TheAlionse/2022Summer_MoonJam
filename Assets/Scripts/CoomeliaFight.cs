@@ -23,6 +23,7 @@ public class CoomeliaFight : MonoBehaviour
     public GameObject moonblast_prefab;
     public GameObject cave_exit;
     public GameObject route_block;
+    public GameObject legendgun;
     private static GameObject bosshp_bar;
 
     public AudioSource charging_beam_audio;
@@ -124,6 +125,7 @@ public class CoomeliaFight : MonoBehaviour
                 move = false;
                 am_immune = true;
                 StopCoroutine("FightRotation");
+                legendgun.SetActive(true);
                 kill_me = true;
                 bosshp_bar.GetComponent<BossHealthBar>().disableroot();
                 GameObject.FindWithTag("Player").GetComponent<PlayerHealth>().removeBossTrigger();
