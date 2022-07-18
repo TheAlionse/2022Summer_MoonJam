@@ -136,6 +136,7 @@ MonoBehaviour:
   cumbee_bullet: {fileID: 7672356971844622926, guid: 16a5ff7d08e659f4aa93f6e7fa063451, type: 3}
   bulletSpawn: {fileID: 8866563050881806995}
   gunStats: {fileID: 8290518052277762352}
+  shoot_audio: {fileID: 0}
 --- !u!114 &8290518052277762352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9aa35486793a174697a3633263196b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 20
   cooldown: 2
   range_or_duration: 5
   max_bullet_count: 10
@@ -409,4 +410,5 @@ MonoBehaviour:
   - {fileID: 0}
   spriteRenderer: {fileID: 8866563051970124692}
   speed: 3
-  health: 100
+  health: 1000
+  spawn_gun: {fileID: 0}

@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f794a54cc4a30a4f9d59d9797c818cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  health: 3
-  damage: 1
+  speed: 4
+  health: 10
+  damage: 2
   spriteRenderer: {fileID: 8736070035792984415}
 --- !u!60 &8736070035792984413
 PolygonCollider2D:

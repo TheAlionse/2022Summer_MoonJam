@@ -15,6 +15,7 @@ TagManager:
   - BOSSHPUI
   - EnemyProjectile
   - EnemyWaterBeam
+  - SpawnManager
   layers:
   - Default
   - TransparentFX

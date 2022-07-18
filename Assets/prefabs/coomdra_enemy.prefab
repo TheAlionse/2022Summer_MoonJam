@@ -108,6 +108,7 @@ MonoBehaviour:
   - {fileID: 8372557104215013059, guid: e2e06c8edcf966649b49445dbdc498f2, type: 3}
   bulletSpawn: {fileID: 4305339812669401651}
   gunStats: {fileID: 4305339812594946732}
+  shoot_audio: {fileID: 0}
 --- !u!114 &4305339812594946732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9aa35486793a174697a3633263196b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 5
   cooldown: 0.3
   range_or_duration: 0.2
   max_bullet_count: 20
@@ -145,8 +146,9 @@ MonoBehaviour:
   chargeSpeed: 10
   chargeDelay: 5
   chargeDuration: 1.5
-  health: 100
+  health: 1000
   chargeCooldown: 5
+  spawn_gun: {fileID: 0}
 --- !u!60 &4305339812594946735
 PolygonCollider2D:
   m_ObjectHideFlags: 0

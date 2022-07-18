@@ -8,6 +8,7 @@ public class EnemyAIScript : MonoBehaviour
     public int health;
     public int damage;
     public SpriteRenderer spriteRenderer;
+    GameObject spawnManager;
     bool looking_right = true;
     Vector3 initialScale;
     GameObject player;
@@ -16,6 +17,7 @@ public class EnemyAIScript : MonoBehaviour
     {
         initialScale = transform.localScale;
         player = GameObject.FindGameObjectsWithTag("Player")[0];
+        spawnManager = GameObject.FindGameObjectWithTag("SpawnManager");
     }
 
     // Update is called once per frame
@@ -48,6 +50,7 @@ public class EnemyAIScript : MonoBehaviour
             StartCoroutine(TakeDamage());
             if (health <= 0)
             {
+                spawnManager.GetComponent<SpawnerManager>().Decrement();
                 Destroy(gameObject);
             }
         }
@@ -62,6 +65,7 @@ public class EnemyAIScript : MonoBehaviour
             StartCoroutine(TakeDamage());
             if (health <= 0)
             {
+                spawnManager.GetComponent<SpawnerManager>().Decrement();
                 Destroy(gameObject);
             }
         }

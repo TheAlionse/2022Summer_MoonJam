@@ -31,7 +31,6 @@ public class PlayerHealth : MonoBehaviour
     }
     public void takeDamage(int dmg)
     {
-        Debug.Log(dmg);
         if (immune == false)
         {
             take_damage_audio.Play();

@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9aa35486793a174697a3633263196b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 1
   cooldown: 0
   range_or_duration: 15
   max_bullet_count: -1
@@ -178,7 +178,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 9095719615090645768}
   spawn_gun: {fileID: 0}
   shoot_audio: {fileID: 4075335151586097978}
-  angularSpeed: 4.5
+  angularSpeed: 4
   frenzyAngularSpeed: 15
   frenzyAttackVelocity: 75
   frenzyAttacksAmount: 20
@@ -186,7 +186,7 @@ MonoBehaviour:
   frenzyAttackCooldown: 0.3
   normalShootDuration: 5
   normalShootCooldown: 0.5
-  health: 100
+  health: 1000
 --- !u!50 &7386287997268129736
 Rigidbody2D:
   serializedVersion: 4
