@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5459965178192971775}
-  speed: 5
+  speed: 6
   dash_key: 32
   dash_speed: 4
   dash_cd_reset: 5

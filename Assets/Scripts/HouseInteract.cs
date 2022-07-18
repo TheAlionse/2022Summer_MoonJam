@@ -74,7 +74,8 @@ public class HouseInteract : MonoBehaviour
         //might want to lock playermovement
         Debug.Log("hit e");
         //fade to black
-        scream.Play();
+        if(scream != null)
+            scream.Play();
         FadeOut();
         yield return new WaitForSeconds(1f);
         Debug.Log(obj_coord.transform.position);
