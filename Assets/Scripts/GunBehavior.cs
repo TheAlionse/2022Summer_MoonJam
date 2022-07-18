@@ -6,6 +6,8 @@ public class GunBehavior : MonoBehaviour
 {
     public List<GameObject> guns;
     public GameObject specialGun;
+    public float gunSwapCooldown;
+    public float specialGunSwapCooldown;
 
     GameObject gunObject;
     GunStats gunStats;
@@ -15,6 +17,7 @@ public class GunBehavior : MonoBehaviour
     float cooldown_timestamp;
     int special_gun_counter = 0;
     int last_gun_index = 0;
+    Coroutine coroutine;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,11 +46,6 @@ public class GunBehavior : MonoBehaviour
             cooldown_timestamp = Time.time + gunStats.cooldown;
             gunObject.SendMessage("Shoot");
         }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            SwapGun();
-        }
     }
 
     void SwapGun()
@@ -59,6 +57,7 @@ public class GunBehavior : MonoBehaviour
 
             if (special_gun_counter >= 10 && Random.Range(0, 4) == 1)
             {
+                last_gun_index = -1;
                 special_gun_counter = 0;
                 new_gun = specialGun;
             }
@@ -83,6 +82,10 @@ public class GunBehavior : MonoBehaviour
 
     public void AddGun(GameObject gun_prefab)
     {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
         guns.Add(gun_prefab);
         if(gunObject != null)
         {
@@ -90,10 +93,19 @@ public class GunBehavior : MonoBehaviour
         }
         last_gun_index = guns.Count - 1;
         EquipGun(gun_prefab);
+
+        if(guns.Count >= 2)
+        {
+            coroutine = StartCoroutine(RandomizeGun());
+        }
     }
 
     public void AddSpecialGun(GameObject gun_prefab)
     {
+        if(coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
         specialGun = gun_prefab;
         if (gunObject != null)
         {
@@ -101,7 +113,10 @@ public class GunBehavior : MonoBehaviour
         }
         last_gun_index = -1;
         EquipGun(gun_prefab);
-
+        if (guns.Count >= 2)
+        {
+            coroutine = StartCoroutine(RandomizeGun());
+        }
     }
 
     void EquipGun(GameObject new_gun)
@@ -124,5 +139,22 @@ public class GunBehavior : MonoBehaviour
         }
         cooldown_timestamp = Time.time;
 
+    }
+
+    IEnumerator RandomizeGun()
+    {
+        while (true)
+        {
+            if (last_gun_index == -1)
+            {
+                yield return new WaitForSeconds(specialGunSwapCooldown);
+            }
+            else
+            {
+                yield return new WaitForSeconds(gunSwapCooldown);
+            }
+
+            SwapGun();
+        }
     }
 }
