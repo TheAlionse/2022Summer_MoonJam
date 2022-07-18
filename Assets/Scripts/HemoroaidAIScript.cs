@@ -11,6 +11,8 @@ public class HemoroaidAIScript : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public GameObject spawn_gun;
 
+    public AudioSource shoot_audio;
+
     public float angularSpeed;
     public float frenzyAngularSpeed;
     public float frenzyAttackVelocity;
@@ -46,6 +48,7 @@ public class HemoroaidAIScript : MonoBehaviour
 
         while (true)
         {
+            
             Debug.Log("shoot start");
             target = GameObject.FindGameObjectsWithTag("Player")[0];
 
@@ -189,11 +192,13 @@ public class HemoroaidAIScript : MonoBehaviour
     {
         if (waterBeamInstance == null && shooting)
         {
+            shoot_audio.Play();
             ShootWaterBeam();
         }
 
         if (waterBeamInstance != null && !shooting)
         {
+            shoot_audio.Stop();
             Destroy(waterBeamInstance);
             waterBeamInstance = null;
         }

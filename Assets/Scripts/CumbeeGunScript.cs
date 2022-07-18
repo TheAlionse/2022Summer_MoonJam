@@ -8,6 +8,7 @@ public class CumbeeGunScript : MonoBehaviour
     public GameObject cumbee_bullet;
     public GameObject bulletSpawn;
     public GunStats gunStats;
+    public AudioSource shoot_audio;
 
     int current_bee_count;
 
@@ -21,6 +22,7 @@ public class CumbeeGunScript : MonoBehaviour
 
     IEnumerator ShootFunction()
     {
+        shoot_audio.Play();
         current_bee_count++;
         GameObject bullet = Instantiate(cumbee_bullet, bulletSpawn.transform.position, Quaternion.identity);
         bullet.GetComponent<BulletStats>().damage = gunStats.damage;
@@ -53,6 +55,7 @@ public class CumbeeGunScript : MonoBehaviour
 
     IEnumerator AIShootFunction()
     {
+        shoot_audio.Play();
         current_bee_count++;
         GameObject bullet = Instantiate(cumbee_bullet, bulletSpawn.transform.position, Quaternion.identity);
         bullet.GetComponent<BulletStats>().damage = gunStats.damage;

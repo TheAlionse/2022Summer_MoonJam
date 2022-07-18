@@ -8,6 +8,8 @@ public class BorpeyGunScript : MonoBehaviour
     public GameObject slash;
     public GunStats gunStats;
 
+    public AudioSource shoot_audio;
+
     PlayerMoveTest script;
     GameObject player;
 
@@ -26,6 +28,7 @@ public class BorpeyGunScript : MonoBehaviour
 
     IEnumerator ShootFunction()
     {
+        shoot_audio.Play();
         Vector3 look_dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - bulletSpawn.transform.position;
         Vector3 new_position = bulletSpawn.transform.position + gunStats.range_or_duration * look_dir.normalized;
         GameObject slash_instance = Instantiate(slash, new_position, Quaternion.identity);

@@ -8,6 +8,9 @@ public class HemoroaidGunScript : MonoBehaviour
     public GameObject bulletSpawn;
     public GunStats gunStats;
 
+
+    public AudioSource shoot_audio;
+
     PlayerMoveTest script;
     GameObject player;
     GameObject waterBeamInstance = null;
@@ -23,11 +26,13 @@ public class HemoroaidGunScript : MonoBehaviour
     {
         if(waterBeamInstance == null && Input.GetMouseButtonDown(0))
         {
+            shoot_audio.Play();
             ShootWaterBeam();
         }
 
         if (waterBeamInstance != null && Input.GetMouseButtonUp(0))
         {
+            shoot_audio.Stop();
             Destroy(waterBeamInstance);
             waterBeamInstance = null;
         }

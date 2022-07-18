@@ -7,6 +7,7 @@ public class CoomdraGunScript : MonoBehaviour
     public GameObject[] cooms;
     public GameObject bulletSpawn;
     public GunStats gunStats;
+    public AudioSource shoot_audio;
 
     public void Shoot()
     {
@@ -15,7 +16,7 @@ public class CoomdraGunScript : MonoBehaviour
 
     IEnumerator ShootFunction()
     {
-
+        shoot_audio.Play();
         GameObject[] bullets = new GameObject[gunStats.max_bullet_count];
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePosition - (Vector2)transform.position;
@@ -52,7 +53,7 @@ public class CoomdraGunScript : MonoBehaviour
 
     IEnumerator AIShootFunction()
     {
-
+        shoot_audio.Play();
         GameObject[] bullets = new GameObject[gunStats.max_bullet_count];
         Vector2 target = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
         Vector2 direction = target - (Vector2)transform.position;
