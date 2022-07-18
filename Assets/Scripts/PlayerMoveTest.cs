@@ -16,6 +16,8 @@ public class PlayerMoveTest : MonoBehaviour
     public AudioSource dash_audio;
     public bool looking_right = true;
 
+    public BoostBarFill boost_bar;
+
     private Vector3 my_input;
     private float old_speed;
     private float dash_cool_down;
@@ -28,6 +30,7 @@ public class PlayerMoveTest : MonoBehaviour
         Vector2 cursor_offset = new Vector2(crosshair.width / 2, crosshair.height / 2);
         Cursor.SetCursor(crosshair, cursor_offset, CursorMode.Auto);
         initialScale = transform.localScale;
+        boost_bar.HideBoostCooldownTimer();
     }
 
     // Update is called once per frame
@@ -39,6 +42,8 @@ public class PlayerMoveTest : MonoBehaviour
         if(Input.GetKeyDown(dash_key) & dash_cool_down <= 0)
         {
             dash_audio.Play();
+            boost_bar.ShowBoostCooldownTimer();
+            StartCoroutine(boost_bar.StartBoostCooldownTimer(dash_cd_reset));
             this.speed = this.speed * dash_speed;
             dash_cool_down = dash_cd_reset;
             cur_dash_time = 0;
