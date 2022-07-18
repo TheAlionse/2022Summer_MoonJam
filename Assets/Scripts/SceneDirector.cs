@@ -15,7 +15,6 @@ public class SceneDirector : MonoBehaviour
     public GameObject gun_pickup3;
     public GameObject gun_pickup4;
     public GameObject gun_pickup5;
-    public GameObject gun_pickup6;
 
     public GameObject bosshp_bar;
     public GameObject my_player;
@@ -35,12 +34,12 @@ public class SceneDirector : MonoBehaviour
         fade_script = fade_ui.GetComponent<FadeScript>();
         dialogue_runner.AddCommandHandler<float>("fadeout", fadeout);
         dialogue_runner.AddCommandHandler<string>("loadscene", loadscene);
+        dialogue_runner.AddCommandHandler<GameObject>("flip", flipchar);
         dialogue_runner.AddCommandHandler("gun1", gun1);
-        dialogue_runner.AddCommandHandler("gun1", gun2);
-        dialogue_runner.AddCommandHandler("gun1", gun3);
-        dialogue_runner.AddCommandHandler("gun1", gun4);
-        dialogue_runner.AddCommandHandler("gun1", gun5);
-        dialogue_runner.AddCommandHandler("gun1", gun6);
+        dialogue_runner.AddCommandHandler("gun2", gun2);
+        dialogue_runner.AddCommandHandler("gun3", gun3);
+        dialogue_runner.AddCommandHandler("gun4", gun4);
+        dialogue_runner.AddCommandHandler("gun5", gun5);
     }
 
 
@@ -80,7 +79,7 @@ public class SceneDirector : MonoBehaviour
         SceneManager.LoadScene(scenename, LoadSceneMode.Single);
     }
 
-    private void flip(GameObject character)
+    private void flipchar(GameObject character)
     {
         character.GetComponent<SpriteRenderer>().flipX = !character.GetComponent<SpriteRenderer>().flipX;
     }
@@ -108,9 +107,5 @@ public class SceneDirector : MonoBehaviour
     private void gun5()
     {
         gun_pickup5.SetActive(true);
-    }
-    private void gun6()
-    {
-        gun_pickup6.SetActive(true);
     }
 }

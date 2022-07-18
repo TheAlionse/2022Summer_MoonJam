@@ -9,6 +9,7 @@ public class HemoroaidAIScript : MonoBehaviour
     public GunStats gunStats;
     public GameObject[] targets;
     public SpriteRenderer spriteRenderer;
+    public GameObject spawn_gun;
 
     public float angularSpeed;
     public float frenzyAngularSpeed;
@@ -238,6 +239,8 @@ public class HemoroaidAIScript : MonoBehaviour
             StartCoroutine(TakeDamage());
             if (health <= 0)
             {
+                spawn_gun.transform.position = gameObject.transform.position;
+                spawn_gun.SetActive(true);
                 Destroy(gameObject);
             }
         }
@@ -252,6 +255,8 @@ public class HemoroaidAIScript : MonoBehaviour
             StartCoroutine(TakeDamage());
             if (health <= 0)
             {
+                spawn_gun.transform.position = gameObject.transform.position;
+                spawn_gun.SetActive(true);
                 Destroy(gameObject);
             }
         }

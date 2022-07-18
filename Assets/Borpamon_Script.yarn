@@ -1,6 +1,7 @@
 ﻿title: Start
 ---
 <<stopmove>>
+<<set $croak = 0>>
 Mom: Alright Purple, have a fun day today!
 Mom: Don't Forget to get your Borpamon from Professor Croak!
 Mom: He said he would meet you over at the lake to the left of town.
@@ -12,10 +13,18 @@ title: GetGunOne
 tags:
 ---
 <<stopmove>>
-Croak: Oh Purple, I am glad you were able to make it!
-<<flip corpa>>
-Croak: Here I have just the thing, go and grab that Borpey over there.
-<<gun1>>
+<<if $croak == 0>>
+	<<set $croak = 1>>
+	Croak: Oh Purple, I am glad you were able to make it!
+	<<flip corpa>>
+	Croak: Here I have just the thing, go and grab that Borpey over there.
+	Croak: Just be careful for any larger than normal Borpamon.
+	Croak: Normally they like to hide off the sides of the main trails.
+	Croak: But they may end up being useful in the long  run.
+	<<gun1>>
+<<else>>
+	Croak: What are you waiting for get out there and explore!
+<<endif>>
 <<resumemove>>
 ===
 

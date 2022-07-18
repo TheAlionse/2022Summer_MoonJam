@@ -10,6 +10,8 @@ public class KadorpraAIScript : MonoBehaviour
     public float speed;
     public int health = 100;
 
+    public GameObject spawn_gun;
+
     bool looking_right = true;
     Rigidbody2D rb;
     Vector3 target;
@@ -72,6 +74,8 @@ public class KadorpraAIScript : MonoBehaviour
             StartCoroutine(TakeDamage());
             if (health <= 0)
             {
+                spawn_gun.transform.position = gameObject.transform.position;
+                spawn_gun.SetActive(true);
                 Destroy(gameObject);
             }
         }
@@ -86,6 +90,8 @@ public class KadorpraAIScript : MonoBehaviour
             StartCoroutine(TakeDamage());
             if (health <= 0)
             {
+                spawn_gun.transform.position = gameObject.transform.position;
+                spawn_gun.SetActive(true);
                 Destroy(gameObject);
             }
         }

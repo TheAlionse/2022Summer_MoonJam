@@ -39,6 +39,7 @@ public class kadorpra_gun_script : MonoBehaviour
 
     IEnumerator AIShootFunction()
     {
+        shoot_audio.Play();
         GameObject bullet = Instantiate(spoon, bulletSpawn.transform.position, Quaternion.identity);
         bullet.GetComponent<BulletStats>().damage = gunStats.damage;
         Vector2 target = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
