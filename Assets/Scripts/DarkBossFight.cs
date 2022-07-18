@@ -9,6 +9,7 @@ public class DarkBossFight : MonoBehaviour
     public float speed;
     public GameObject shadowball_prefab;
     public GameObject dark_exit;
+    public GameObject route_block;
 
     public AudioSource shadow_ball_audio;
     public AudioSource damage_audio;
@@ -29,6 +30,10 @@ public class DarkBossFight : MonoBehaviour
     private Vector2 my_move_point;
     private int move_point_count;
     private GameObject player;
+
+    private bool kill_me = false;
+    private float currentVelocity;
+    private float smoothTime = 2f;
 
     private void Start()
     {
@@ -69,10 +74,13 @@ public class DarkBossFight : MonoBehaviour
             }
             else if (health <= 0)
             {
-                Debug.Log("phase 3");
+                StopCoroutine("DarkFight");
+                Debug.Log("boss ded");
+                dark_exit.SetActive(true);
+                route_block.SetActive(false);
                 //play death animation
                 die_audio.Play();
-                Destroy(gameObject);
+                kill_me = true;
             }
             Debug.Log(health);
         }
@@ -93,7 +101,16 @@ public class DarkBossFight : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (move_circle) {
+        if (kill_me)
+        {
+            float cur_scale = Mathf.SmoothDamp(gameObject.transform.localScale.x, 0, ref currentVelocity, smoothTime);
+            gameObject.transform.localScale = new Vector3(cur_scale, cur_scale, 1);
+            if (cur_scale < .001f)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (move_circle) {
             transform.position = Vector2.MoveTowards(gameObject.transform.position, my_move_point, speed * Time.deltaTime);
             if (Vector3.Distance(transform.position, my_move_point) < 0.001f)
             {

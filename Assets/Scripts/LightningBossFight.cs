@@ -15,6 +15,7 @@ public class LightningBossFight : MonoBehaviour
     public GameObject lightning_rods_prefab;
     public GameObject lightning_connections_prefab;
     public GameObject lightning_exit;
+    public GameObject route_block;
 
     private Renderer my_ren;
 
@@ -29,6 +30,9 @@ public class LightningBossFight : MonoBehaviour
 
     private int maxCount = 3;
     private int curCount = 0;
+
+    private bool kill_me = false;
+
 
     private void Start()
     {
@@ -63,10 +67,12 @@ public class LightningBossFight : MonoBehaviour
             }
             else if (health <= 0)
             {
-                Debug.Log("phase 3");
+                StopCoroutine("LightningFight");
+                Debug.Log("boss ded");
                 lightning_exit.SetActive(true);
+                route_block.SetActive(false);
                 //play death animation
-                Destroy(gameObject);
+                kill_me = true;
             }
             Debug.Log(health);
         }
@@ -89,18 +95,29 @@ public class LightningBossFight : MonoBehaviour
     private void FixedUpdate()
     {
         //movement
-
-        float cur_scale = Mathf.SmoothDamp(lightning_ring_prefab.transform.localScale.x, cur_scale_target, ref currentVelocity, smoothTime);
-        lightning_ring_prefab.transform.localScale = new Vector3(cur_scale, cur_scale, 1);
-        if (Mathf.Abs(cur_scale_target - cur_scale) < .1f)
+        if (kill_me)
         {
-            if (bigger)
+            float cur_scale = Mathf.SmoothDamp(gameObject.transform.localScale.x, 0, ref currentVelocity, smoothTime);
+            gameObject.transform.localScale = new Vector3(cur_scale, cur_scale, 1);
+            if (cur_scale < .001f)
             {
-                cur_scale_target = 0f;
+                Destroy(gameObject);
             }
-            else
-                cur_scale_target = max_static_size;
-            bigger = !bigger;
+        }
+        else
+        {
+            float cur_scale = Mathf.SmoothDamp(lightning_ring_prefab.transform.localScale.x, cur_scale_target, ref currentVelocity, smoothTime);
+            lightning_ring_prefab.transform.localScale = new Vector3(cur_scale, cur_scale, 1);
+            if (Mathf.Abs(cur_scale_target - cur_scale) < .1f)
+            {
+                if (bigger)
+                {
+                    cur_scale_target = 0f;
+                }
+                else
+                    cur_scale_target = max_static_size;
+                bigger = !bigger;
+            }
         }
     }
 
