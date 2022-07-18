@@ -9,6 +9,10 @@ public class PlayerHealth : MonoBehaviour
     private  static GameObject my_health_bar;
     public GameObject death_ui;
 
+    private static GameObject bosshp_bar;
+
+    private GameObject bosstrigger;
+    private GameObject curboss;
 
     public AudioSource take_damage_audio;
 
@@ -17,15 +21,13 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         my_health_bar = GameObject.FindGameObjectWithTag("PlayerHPUI'");
-        Debug.Log(my_health_bar);
+        bosshp_bar = GameObject.FindGameObjectWithTag("BOSSHPUI");
     }
 
     public void heal_player(int heal)
     {
-        Debug.Log(gameObject.name);
         player_health = Mathf.Min(player_health + heal, max_health);
         my_health_bar.GetComponent<HealthBar>().SetHealth(player_health);
-        Debug.Log("healed");
     }
     public void takeDamage(int dmg)
     {
@@ -39,7 +41,19 @@ public class PlayerHealth : MonoBehaviour
             if (player_health <= 0)
             {
                 Debug.Log("Ded");
-                death_ui.SetActive(true);
+                death_ui.GetComponent<DeathUIDoc>().enabledeathroot();
+                //die to boss
+                if (curboss != null)
+                    curboss.SetActive(false);
+                if(bosstrigger != null)
+                {
+                    Debug.Log("reactivate trigger");
+                    bosstrigger.SetActive(true);
+                }
+                bosshp_bar.GetComponent<BossHealthBar>().disableroot();
+                StopAllCoroutines();
+                //turn on boss trigger
+                immune = false;
                 gameObject.SetActive(false);
                 //play death stuff
             }
@@ -51,5 +65,23 @@ public class PlayerHealth : MonoBehaviour
         immune = true;
         yield return new WaitForSeconds(.75f);
         immune = false;
+    }
+
+    public void SetBossTrigger(GameObject trigger)
+    {
+        this.bosstrigger = trigger;
+        Debug.Log("Set boss Trigger: " + bosstrigger.name);
+    }
+
+    public void removeBossTrigger()
+    {
+        bosstrigger = null;
+        curboss = null;
+        Debug.Log("removed boss trigger");
+    }
+
+    public void setcurboss(GameObject curboss)
+    {
+        this.curboss = curboss;
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - Walls
   - WaterBeam
   - PlayerHPUI'
+  - BOSSHPUI
   layers:
   - Default
   - TransparentFX

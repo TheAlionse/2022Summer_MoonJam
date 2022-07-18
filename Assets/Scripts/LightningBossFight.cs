@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightningBossFight : MonoBehaviour
 {
-    public int health;
+    public int max_health;
     public float max_static_size;
     public float smoothTime;
 
@@ -16,7 +16,7 @@ public class LightningBossFight : MonoBehaviour
     public GameObject lightning_connections_prefab;
     public GameObject lightning_exit;
     public GameObject route_block;
-    public BossHealthBar bosshp_bar;
+    private static GameObject bosshp_bar;
 
     private Renderer my_ren;
 
@@ -34,14 +34,24 @@ public class LightningBossFight : MonoBehaviour
 
     private bool kill_me = false;
 
-    private int max_health;
+    private int health;
     private void Start()
     {
-        max_health = health;
         phase_change1 = (int)(health * .7);
         phase_change2 = (int)(health * .4);
         am_immune = false;
         my_ren = my_ren = gameObject.GetComponent<Renderer>();
+    }
+
+    void OnEnable()
+    {
+        //spawn_audio.Play();
+        am_immune = false;
+        health = max_health;
+        phase = 1;
+        bosshp_bar = GameObject.FindGameObjectWithTag("BOSSHPUI");
+        bosshp_bar.GetComponent<BossHealthBar>().enableroot();
+        bosshp_bar.GetComponent<BossHealthBar>().SetHealth(health, max_health);
         StartCoroutine("LightningFight");
     }
 
@@ -75,9 +85,11 @@ public class LightningBossFight : MonoBehaviour
                 route_block.SetActive(false);
                 //play death animation
                 kill_me = true;
+                GameObject.FindWithTag("Player").GetComponent<PlayerHealth>().removeBossTrigger();
+                bosshp_bar.GetComponent<BossHealthBar>().disableroot();
             }
             Debug.Log(health);
-            bosshp_bar.SetHealth(health, max_health);
+            bosshp_bar.GetComponent<BossHealthBar>().SetHealth(health, max_health);
         }
     }
 

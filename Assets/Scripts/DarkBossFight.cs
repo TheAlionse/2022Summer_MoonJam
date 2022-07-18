@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DarkBossFight : MonoBehaviour
 {
-    public int health;
+    public int max_health;
     public float shadowball_force;
     public float speed;
     public GameObject shadowball_prefab;
@@ -17,7 +17,7 @@ public class DarkBossFight : MonoBehaviour
     public AudioSource phase_change_audio;
     public AudioSource die_audio;
 
-    public BossHealthBar bosshp_bar;
+    private static GameObject bosshp_bar;
     private Renderer my_ren;
 
     private bool am_immune;
@@ -36,15 +36,13 @@ public class DarkBossFight : MonoBehaviour
     private float currentVelocity;
     private float smoothTime = 2f;
 
-    private int max_health;
+    private int health;
 
     private void Start()
     {
-        max_health = health;
         phase_change1 = (int)(health * .5);
         am_immune = false;
         my_ren = my_ren = gameObject.GetComponent<Renderer>();
-        StartCoroutine("DarkFight");
         move_point_count = 0;
         my_move_point = move_points[move_point_count];
         move_circle = true;
@@ -53,7 +51,16 @@ public class DarkBossFight : MonoBehaviour
 
     void OnEnable()
     {
+        am_immune = false;
+        move_point_count = 0;
+        move_circle = true;
         spawn_audio.Play();
+        health = max_health;
+        phase = 1;
+        bosshp_bar = GameObject.FindGameObjectWithTag("BOSSHPUI");
+        bosshp_bar.GetComponent<BossHealthBar>().enableroot();
+        bosshp_bar.GetComponent<BossHealthBar>().SetHealth(health, max_health);
+        StartCoroutine("DarkFight");
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -85,9 +92,10 @@ public class DarkBossFight : MonoBehaviour
                 //play death animation
                 die_audio.Play();
                 kill_me = true;
+                bosshp_bar.GetComponent<BossHealthBar>().disableroot();
+                player.GetComponent<PlayerHealth>().removeBossTrigger();
             }
-            Debug.Log(health);
-            bosshp_bar.SetHealth(health, max_health);
+            bosshp_bar.GetComponent<BossHealthBar>().SetHealth(health, max_health);
         }
     }
     IEnumerator dmgImmune()
@@ -130,7 +138,6 @@ public class DarkBossFight : MonoBehaviour
         }
         else
         {
-            Debug.Log("moving at player");
             Vector2 player_pos = player.transform.position;
             transform.position = Vector2.MoveTowards(gameObject.transform.position, player_pos, (1 + speed) * Time.deltaTime);
         }

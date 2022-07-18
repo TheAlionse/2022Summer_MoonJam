@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CoomeliaFight : MonoBehaviour
 {
-    public int health;
+    public int max_health;
     public float speed;
     public float pyscho_cut_force; 
     public float moonblast_force;
@@ -23,7 +23,7 @@ public class CoomeliaFight : MonoBehaviour
     public GameObject moonblast_prefab;
     public GameObject cave_exit;
     public GameObject route_block;
-    public BossHealthBar bosshp_bar;
+    private static GameObject bosshp_bar;
 
     public AudioSource charging_beam_audio;
     public AudioSource switch_sides_audio;
@@ -57,12 +57,11 @@ public class CoomeliaFight : MonoBehaviour
     private int phase_change1;
     private int phase_change2;
 
-    private int max_health;
+    private int health;
 
     // Start is called before the first frame update
     void Start()
     {
-        max_health = health;
         am_immune = false;
         phase_change1 = (int)(health * .7);
         phase_change2 = (int)(health * .4);
@@ -73,12 +72,21 @@ public class CoomeliaFight : MonoBehaviour
         facing_right = true;
         my_ren = gameObject.GetComponent<Renderer>();
         my_sprite = gameObject.GetComponent<SpriteRenderer>();
-        StartCoroutine("FightRotation");
+        
     }
 
     void OnEnable()
     {
+        am_immune = false;
+        move = true;
+        stay = true;
         spawn_audio.Play();
+        health = max_health;
+        phase = 1;
+        bosshp_bar = GameObject.FindGameObjectWithTag("BOSSHPUI");
+        bosshp_bar.GetComponent<BossHealthBar>().enableroot();
+        bosshp_bar.GetComponent<BossHealthBar>().SetHealth(health, max_health);
+        StartCoroutine("FightRotation");
     }
 
     
@@ -117,9 +125,11 @@ public class CoomeliaFight : MonoBehaviour
                 am_immune = true;
                 StopCoroutine("FightRotation");
                 kill_me = true;
+                bosshp_bar.GetComponent<BossHealthBar>().disableroot();
+                GameObject.FindWithTag("Player").GetComponent<PlayerHealth>().removeBossTrigger();
             }
             Debug.Log(health);
-            bosshp_bar.SetHealth(health, max_health);
+            bosshp_bar.GetComponent<BossHealthBar>().SetHealth(health, max_health);
         }
     }
     IEnumerator dmgImmune()
@@ -158,6 +168,7 @@ public class CoomeliaFight : MonoBehaviour
             gameObject.transform.localScale = new Vector3(cur_scale, cur_scale, 1);
             if (cur_scale < .001f)
             {
+
                 Destroy(gameObject);
             }
         }

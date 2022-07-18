@@ -8,6 +8,8 @@ public class SceneDirector : MonoBehaviour
     public GameObject Coomelia;
     public GameObject Lightning_boss;
     public GameObject Dark_boss;
+    public GameObject bosshp_bar;
+    public GameObject my_player;
 
     private DialogueRunner dialogue_runner;
     private void Awake()
@@ -18,16 +20,20 @@ public class SceneDirector : MonoBehaviour
         dialogue_runner.AddCommandHandler("spawndark", spawndark);
     }
 
+
     private void spawnLegend()
     {
+        my_player.GetComponent<PlayerHealth>().setcurboss(Coomelia);
         Coomelia.SetActive(true);
     }
     private void spawnlightning()
     {
+        my_player.GetComponent<PlayerHealth>().setcurboss(Lightning_boss);
         Lightning_boss.SetActive(true);
     }
     private void spawndark()
     {
+        my_player.GetComponent<PlayerHealth>().setcurboss(Dark_boss);
         Dark_boss.SetActive(true);
     }
 }
