@@ -104,10 +104,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828bd1d138d82754bb91b5768a88bbf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 75
+  max_health: 1500
   shadowball_force: 8
-  speed: 4
+  max_speed: 2
   shadowball_prefab: {fileID: 5521166697625112354, guid: 03a50b3e1a0be92459d358c807a937a6, type: 3}
+  dark_exit: {fileID: 0}
+  route_block: {fileID: 0}
   shadow_ball_audio: {fileID: 1808486142}
   damage_audio: {fileID: 1808486141}
   spawn_audio: {fileID: 1808486140}

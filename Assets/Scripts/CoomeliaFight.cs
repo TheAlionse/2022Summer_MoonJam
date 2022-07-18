@@ -97,7 +97,7 @@ public class CoomeliaFight : MonoBehaviour
     //TODO: UPDATE TO HANDLE WATERGUN
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("PlayerProjectile") && !am_immune)
+        if (collision.CompareTag("PlayerProjectile") || collision.CompareTag("WaterBeam") && !am_immune)
         {
             StartCoroutine("dmgImmune");
             //update hp
