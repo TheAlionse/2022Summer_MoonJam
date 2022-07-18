@@ -10,8 +10,9 @@ public class BadSpawner : MonoBehaviour
 
     public CircleCollider2D my_collider;
 
-    private bool waiting;
     SpawnerManager sm;
+    Coroutine spawn;
+    bool entered = false;
 
     private void Start()
     {
@@ -19,22 +20,24 @@ public class BadSpawner : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("waiting:"+ waiting);
-        if (!waiting)
+        if (!entered)
         {
-            StartCoroutine("Spawner");
+            entered = true;
+            spawn = StartCoroutine("Spawner");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        StopCoroutine("Spawner");
-        waiting = false;
+        entered = false;
+        StopCoroutine(spawn);
     }
 
     IEnumerator Spawner()
     {
+        Debug.Log("disable spawner:" + sm.disableSpawning);
         if (!sm.disableSpawning)
         {
+            Debug.Log("spawn");
             float x = ((my_collider.radius / 2) + 1) * 2;
             float random_x = Random.Range(my_collider.radius / 2, (my_collider.radius / 2) + x);
             if (random_x > my_collider.radius)
@@ -54,9 +57,7 @@ public class BadSpawner : MonoBehaviour
             sm.Increment();
         }
 
-        waiting = true;
         yield return new WaitForSeconds(spawn_timer);
-        waiting = false;
-        StartCoroutine("Spawner");
+        spawn = StartCoroutine("Spawner");
     }
 }

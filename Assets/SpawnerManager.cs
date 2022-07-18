@@ -11,7 +11,7 @@ public class SpawnerManager : MonoBehaviour
     public void Increment()
     {
         currentUnitCount++;
-        if(currentUnitCount == maxUnitCount)
+        if(currentUnitCount >= maxUnitCount)
         {
             disableSpawning = true;
         }
@@ -21,5 +21,11 @@ public class SpawnerManager : MonoBehaviour
     {
         currentUnitCount--;
         disableSpawning = false;
+    }
+
+    public void Reset()
+    {
+        disableSpawning = false;
+        currentUnitCount = 0;
     }
 }

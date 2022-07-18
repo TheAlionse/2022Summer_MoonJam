@@ -17,6 +17,7 @@ public class KillAllAITrigger : MonoBehaviour
                     Destroy(ai);
                 }
             }
+            GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnerManager>().Reset();
         }
     }
 }

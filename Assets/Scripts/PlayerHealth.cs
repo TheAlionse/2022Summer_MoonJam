@@ -37,7 +37,6 @@ public class PlayerHealth : MonoBehaviour
             player_health -= dmg;
             my_health_bar.GetComponent<HealthBar>().SetHealth(player_health);
             StartCoroutine(dmgImmune());
-            Debug.Log(player_health);
             if (player_health <= 0)
             {
                 GameObject[] ais = GameObject.FindGameObjectsWithTag("Enemy");
