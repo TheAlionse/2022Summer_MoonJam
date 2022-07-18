@@ -35,29 +35,33 @@ public class CumbeeBulletScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        timer += Time.deltaTime;
-        Vector2 direction = (Vector2)target.transform.position - rb.position;
-        gameObject.transform.Translate(0, oscillate(timer, oscillate_speed, oscillate_scale),0);
-
-        if(!ignore_homing)
+        if(target != null)
         {
-            if (Mathf.Abs(Vector2.Angle(direction, rb.velocity)) < max_homing_latch_angle)
-            {
-                if (!V2Equals(direction, rb.velocity))
-                {
-                    direction.Normalize();
-                    Vector2 velocity = rb.velocity + (direction * pull_strength);
-                    rb.velocity = velocity.normalized * speed;
-                }
+            Vector2 direction = (Vector2)target.transform.position - rb.position;
+            gameObject.transform.Translate(0, oscillate(timer, oscillate_speed, oscillate_scale), 0);
 
-                float rotateAmount = Vector3.Cross(Vector2.Perpendicular(direction), transform.up).z;
-                rb.angularVelocity = -angleChangingSpeed * rotateAmount;
-            }
-            else
+            if (!ignore_homing)
             {
-                ignore_homing = true;
+                if (Mathf.Abs(Vector2.Angle(direction, rb.velocity)) < max_homing_latch_angle)
+                {
+                    if (!V2Equals(direction, rb.velocity))
+                    {
+                        direction.Normalize();
+                        Vector2 velocity = rb.velocity + (direction * pull_strength);
+                        rb.velocity = velocity.normalized * speed;
+                    }
+
+                    float rotateAmount = Vector3.Cross(Vector2.Perpendicular(direction), transform.up).z;
+                    rb.angularVelocity = -angleChangingSpeed * rotateAmount;
+                }
+                else
+                {
+                    ignore_homing = true;
+                }
             }
         }
+        timer += Time.deltaTime;
+
     }
 
     float oscillate(float time, float speed, float scale)
