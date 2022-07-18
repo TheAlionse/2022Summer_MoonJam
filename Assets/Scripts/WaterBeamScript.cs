@@ -5,8 +5,8 @@ using UnityEngine;
 public class WaterBeamScript : MonoBehaviour
 {
 
-    public float max_length;
-    public float speed;
+    [HideInInspector] public float max_length;
+    [HideInInspector] public float speed;
     public float acceleration;
     public SpriteRenderer renderer;
 
@@ -43,7 +43,7 @@ public class WaterBeamScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if((collision.gameObject.tag == "Enemy" && gameObject.tag == "WaterBeam") || (collision.gameObject.tag == "Player" && gameObject.tag == "EnemyWaterBeam"))
         {
             var collisionPoint = collision.ClosestPoint(transform.position);
             var distance = Vector2.Distance(collisionPoint, transform.position);

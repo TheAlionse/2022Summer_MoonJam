@@ -21,7 +21,15 @@ public class CumbeeBulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = FindClosestEnemyToMouse();
+        if(tag == "PlayerProjectile")
+        {
+            target = FindClosestEnemyToMouse();
+
+        }
+        else
+        {
+            target = GameObject.FindGameObjectsWithTag("Player")[0];
+        }
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -73,7 +81,6 @@ public class CumbeeBulletScript : MonoBehaviour
                 distance = curDistance;
             }
         }
-        Debug.Log(closest.gameObject.name);
         return closest;
     }
 
@@ -84,6 +91,6 @@ public class CumbeeBulletScript : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameObject.Find("cumbee").SendMessage("BeeDestroyed");
+        GameObject.Find("cumbee(Clone)").SendMessage("BeeDestroyed");
     }
 }

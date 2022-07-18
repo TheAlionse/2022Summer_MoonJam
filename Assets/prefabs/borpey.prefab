@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   cooldown: 0.23
-  range_or_duration: -1
+  range_or_duration: 5
   max_bullet_count: -1
   velocity: -1
   spread: -1
@@ -145,7 +145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4669048085136872240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.02, y: -0.58, z: 0}
+  m_LocalPosition: {x: -3.45, y: -1.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

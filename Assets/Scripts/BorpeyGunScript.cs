@@ -26,14 +26,22 @@ public class BorpeyGunScript : MonoBehaviour
 
     IEnumerator ShootFunction()
     {
-        GameObject slash_instance = Instantiate(slash, bulletSpawn.transform.position, Quaternion.identity);
+        Vector3 look_dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - bulletSpawn.transform.position;
+        Vector3 new_position = bulletSpawn.transform.position + gunStats.range_or_duration * look_dir.normalized;
+        GameObject slash_instance = Instantiate(slash, new_position, Quaternion.identity);
         slash_instance.GetComponent<BulletStats>().damage = gunStats.damage;
+        float angle = Mathf.Atan2(look_dir.y, look_dir.x) * Mathf.Rad2Deg;
+
         slash_instance.transform.parent = gameObject.transform;
         if (!script.looking_right)
         {
             slash_instance.transform.eulerAngles = new Vector3(0,180,0);
         }
+        slash_instance.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         yield return new WaitForSeconds(0.2f);
         Destroy(slash_instance);
+
+
     }
 }

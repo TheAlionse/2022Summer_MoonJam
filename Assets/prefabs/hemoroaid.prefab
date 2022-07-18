@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 388186144416459004}
   - component: {fileID: 388186144416459005}
   - component: {fileID: 388186144416459003}
+  - component: {fileID: 2127214264}
   m_Layer: 0
   m_Name: hemoroaid
   m_TagString: Gun
@@ -100,6 +101,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterBeam: {fileID: 1638273563131707511, guid: 50b07e2827258024f9c8030144c36070, type: 3}
   bulletSpawn: {fileID: 388186144845849643}
+  gunStats: {fileID: 2127214264}
+--- !u!114 &2127214264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388186144416459006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9aa35486793a174697a3633263196b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  cooldown: 0
+  range_or_duration: 10
+  max_bullet_count: -1
+  velocity: 30
+  spread: -1
+  size: -1
 --- !u!1 &388186144845849643
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class DestroyOnHit : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if ((collision.gameObject.tag == "Enemy" && tag != "EnemyProjectile") || collision.gameObject.tag == "Player" && tag != "PlayerProjectile")
         {
             Destroy(gameObject);
         }

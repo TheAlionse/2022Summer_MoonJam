@@ -10,15 +10,18 @@ public class KadorpraAIScript : MonoBehaviour
     public float speed;
     public float health = 100;
 
+    bool looking_right = true;
     Rigidbody2D rb;
     Vector3 target;
+    Vector3 initialScale;
     // Start is called before the first frame update
     void Start()
     {
         points.Add(GameObject.FindGameObjectsWithTag("Player")[0]);
         rb = gameObject.GetComponent<Rigidbody2D>();
-        //InvokeRepeating("Shoot", 2.0f, gunStats.cooldown);
-        InvokeRepeating("Move", 2.0f, 2.0f);
+        initialScale = transform.localScale;
+        InvokeRepeating("Shoot", 2f, gunStats.cooldown);
+        InvokeRepeating("Move", 2f, 2f);
     }
 
     void Shoot()
@@ -36,6 +39,23 @@ public class KadorpraAIScript : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target, step);
         }
 
+
+
+    }
+
+    private void FixedUpdate()
+    {
+        var delta = GameObject.FindGameObjectsWithTag("Player")[0].transform.position - transform.position;
+        if (delta.x >= 0 && !looking_right)
+        {
+            transform.localScale = initialScale;
+            looking_right = true;
+        }
+        else if (delta.x < 0 && looking_right)
+        {
+            transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
+            looking_right = false;
+        }
     }
 
     void Move()

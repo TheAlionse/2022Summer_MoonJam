@@ -9,10 +9,6 @@ public class CumbeeGunScript : MonoBehaviour
     public GameObject bulletSpawn;
     public GunStats gunStats;
 
-    //public int max_concurrent_bees;
-    //public float duration = 5;
-    //public float velocity = 8;
-
     int current_bee_count;
 
     public void Shoot()
@@ -45,5 +41,33 @@ public class CumbeeGunScript : MonoBehaviour
     void BeeDestroyed()
     {
         current_bee_count--;
+    }
+
+    public void AIShoot()
+    {
+        if (current_bee_count <= gunStats.max_bullet_count)
+        {
+            StartCoroutine(AIShootFunction());
+        }
+    }
+
+    IEnumerator AIShootFunction()
+    {
+        current_bee_count++;
+        GameObject bullet = Instantiate(cumbee_bullet, bulletSpawn.transform.position, Quaternion.identity);
+        bullet.GetComponent<BulletStats>().damage = gunStats.damage;
+        Vector2 target = GameObject.FindGameObjectsWithTag("Player")[0].transform.position;
+        Vector2 direction = target - (Vector2)transform.position;
+        direction.Normalize();
+
+        bullet.GetComponent<Rigidbody2D>().velocity = direction * gunStats.velocity;
+        bullet.transform.localScale = bullet.transform.localScale * gunStats.size;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        yield return new WaitForSeconds(gunStats.range_or_duration);
+
+        Destroy(bullet);
     }
 }
