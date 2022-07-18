@@ -52,6 +52,10 @@ public class HouseInteract : MonoBehaviour
     IEnumerator checkHeal() {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            if(scream != null)
+            {
+                scream.Play();
+            }
             player.GetComponent<PlayerHealth>().heal_player(100);
             player.GetComponent<PlayerMoveTest>().respawn_point = player.transform.position;
             Debug.Log(player.GetComponent<PlayerMoveTest>().respawn_point);

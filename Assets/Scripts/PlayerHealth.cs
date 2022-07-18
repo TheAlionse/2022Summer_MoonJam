@@ -41,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log(player_health);
             if (player_health <= 0)
             {
+
                 Debug.Log("Ded");
                 death_ui.GetComponent<DeathUIDoc>().enabledeathroot();
                 //die to boss
