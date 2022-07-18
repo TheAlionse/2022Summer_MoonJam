@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+using UnityEngine.SceneManagement;
 
 public class SceneDirector : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class SceneDirector : MonoBehaviour
     public GameObject Dark_boss;
     public GameObject bosshp_bar;
     public GameObject my_player;
+    public GameObject fade_ui;
+    private FadeScript fade_script;
 
     private DialogueRunner dialogue_runner;
     private void Awake()
@@ -20,6 +23,10 @@ public class SceneDirector : MonoBehaviour
         dialogue_runner.AddCommandHandler("spawndark", spawndark);
         dialogue_runner.AddCommandHandler("stopmove", stopmove);
         dialogue_runner.AddCommandHandler("resumemove", resumemove);
+
+        fade_script = fade_ui.GetComponent<FadeScript>();
+        dialogue_runner.AddCommandHandler<float>("fadeout", fadeout);
+        dialogue_runner.AddCommandHandler<string>("loadscene", loadscene);
     }
 
 
@@ -49,4 +56,13 @@ public class SceneDirector : MonoBehaviour
         my_player.GetComponent<PlayerMoveTest>().can_move = true;
     }
 
+    private Coroutine fadeout(float time = 1f)
+    {
+        return StartCoroutine(fade_script.changeAlpha(1, time));
+    }
+
+    private void loadscene(string scenename)
+    {
+        SceneManager.LoadScene(scenename, LoadSceneMode.Single);
+    }
 }

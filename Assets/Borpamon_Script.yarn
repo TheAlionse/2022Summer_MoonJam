@@ -56,6 +56,8 @@ If you end up fainting you will be brought back to the last house you checked in
 title: DarkFightEnter
 ---
 <<stopmove>>
+Dark Gym Leader: Oh, I see I have a new challenger.
+Dark Gym Leader: You cannot stop the darkness.
 <<wait 1>>
 <<spawndark>>
 <<resumemove>>
@@ -64,6 +66,8 @@ title: DarkFightEnter
 title: LightningFightEnter
 ---
 <<stopmove>>
+Lightning Gym Leader: Finally, a worthy opponent.
+Lightning Gym Leader: Hopefully you can actually provide some entertainment.
 <<wait 1>>
 <<spawnlightning>>
 <<resumemove>>
@@ -72,6 +76,28 @@ title: LightningFightEnter
 title: LegenedFightEnter
 ---
 <<wait 1>>
+Owww... Where am I?
+W-What is that?
 <<spawnlegend>>
 <<resumemove>>
+===
+
+title: FinalEncounter
+---
+What is this?
+There is nothing here...
+???: Thats right
+Huh, who said that?
+???: There is nothing more beyond this point
+Who are you?
+???: I am one who spans beyond space and time.
+???: Always here yet never here.
+???: Ignored but never forgotten.
+???: I am Scope Creep.
+S-scope creep? What is that?
+Scope Creep: It is not a thing for you to know of
+Scope Creep: Now wake up and return back to your normal word.
+<<fadeout>>
+<<stopmove>>
+<<loadscene CreditScene>>
 ===
