@@ -16,4 +16,10 @@ public class RouteBlock : MonoBehaviour
         //maybe lock playermovement later
         dialogue_runner.StartDialogue(DialogTitle);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        dialogue_runner.StartDialogue(DialogTitle);
+        gameObject.SetActive(false);
+    }
 }

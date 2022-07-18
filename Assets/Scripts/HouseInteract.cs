@@ -10,6 +10,9 @@ public class HouseInteract : MonoBehaviour
     public GameObject obj_coord = null;
     public GameObject fade_ui = null;
 
+    public AudioSource scream;
+
+
     private MeshRenderer my_text;
     private bool inside;
     private FadeScript fade_script;
@@ -71,6 +74,7 @@ public class HouseInteract : MonoBehaviour
         //might want to lock playermovement
         Debug.Log("hit e");
         //fade to black
+        scream.Play();
         FadeOut();
         yield return new WaitForSeconds(1f);
         Debug.Log(obj_coord.transform.position);

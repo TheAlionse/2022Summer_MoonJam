@@ -28,3 +28,21 @@ title: HealReminder
 ---
 If you ever need to heal, check by the purple house with the moon on it.
 ===
+
+title: DarkFightEnter
+---
+<<wait 1>>
+<<spawndark>>
+===
+
+title: LightningFightEnter
+---
+<<wait 1>>
+<<spawnlightning>>
+===
+
+title: LegenedFightEnter
+---
+<<wait 1>>
+<<spawnlegend>>
+===
