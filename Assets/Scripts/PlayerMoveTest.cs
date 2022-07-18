@@ -16,6 +16,8 @@ public class PlayerMoveTest : MonoBehaviour
     public AudioSource dash_audio;
     public bool looking_right = true;
 
+    public Vector2 respawn_point;
+
     public BoostBarFill boost_bar;
 
     private Vector3 my_input;
@@ -81,6 +83,5 @@ public class PlayerMoveTest : MonoBehaviour
             looking_right = false;
         }
     }
-
 
 }

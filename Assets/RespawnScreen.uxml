@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/UI/UserInterfaceStyleSheet.uss?fileID=7433441132597879392&amp;guid=ee4076477e2b1ac4f9764e388952ba47&amp;type=3#UserInterfaceStyleSheet" />
+    <ui:VisualElement name="Background" style="flex-grow: 1; align-items: center; justify-content: space-around; background-color: rgba(51, 25, 25, 0.9);">
+        <ui:GroupBox name="GroupBox">
+            <ui:VisualElement style="height: 308px; width: 525px; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.65); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-left-color: rgba(106, 106, 106, 0); border-right-color: rgba(106, 106, 106, 0); border-top-color: rgba(106, 106, 106, 0); border-bottom-color: rgba(106, 106, 106, 0); border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px;">
+                <ui:Label text="YOU FAINTED" display-tooltip-when-elided="true" name="PauseText" enable-rich-text="true" style="right: auto; height: auto; width: auto; justify-content: space-between; align-items: center; -unity-text-align: middle-center; white-space: normal; font-size: 64px; -unity-font-style: bold; -unity-font: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=d423f3692fd5e454eb78e1c8ab8844ef&amp;type=3#NotInter-Regular&apos;); margin-top: 5%; position: absolute; top: 0; background-color: rgba(0, 0, 0, 0); color: rgb(219, 219, 219);" />
+                <ui:Button text="Retry" display-tooltip-when-elided="true" name="RetryButton" class="pause-screen-button" />
+            </ui:VisualElement>
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>

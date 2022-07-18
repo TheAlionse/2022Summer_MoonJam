@@ -13,7 +13,7 @@ public class BossHealthBar : MonoBehaviour
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
 
-        hp_fill = root.Q<VisualElement>("Fill");
+        hp_fill = root.Q<VisualElement>("Fill2");
     }
 
     public void SetHealth(int health, int max_health)

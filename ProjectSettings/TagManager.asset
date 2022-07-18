@@ -11,6 +11,7 @@ TagManager:
   - PlayerProjectile
   - Walls
   - WaterBeam
+  - PlayerHPUI'
   layers:
   - Default
   - TransparentFX

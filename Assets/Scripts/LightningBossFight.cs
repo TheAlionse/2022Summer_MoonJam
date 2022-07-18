@@ -16,6 +16,7 @@ public class LightningBossFight : MonoBehaviour
     public GameObject lightning_connections_prefab;
     public GameObject lightning_exit;
     public GameObject route_block;
+    public BossHealthBar bosshp_bar;
 
     private Renderer my_ren;
 
@@ -33,9 +34,10 @@ public class LightningBossFight : MonoBehaviour
 
     private bool kill_me = false;
 
-
+    private int max_health;
     private void Start()
     {
+        max_health = health;
         phase_change1 = (int)(health * .7);
         phase_change2 = (int)(health * .4);
         am_immune = false;
@@ -75,6 +77,7 @@ public class LightningBossFight : MonoBehaviour
                 kill_me = true;
             }
             Debug.Log(health);
+            bosshp_bar.SetHealth(health, max_health);
         }
     }
 

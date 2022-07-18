@@ -17,6 +17,7 @@ public class DarkBossFight : MonoBehaviour
     public AudioSource phase_change_audio;
     public AudioSource die_audio;
 
+    public BossHealthBar bosshp_bar;
     private Renderer my_ren;
 
     private bool am_immune;
@@ -35,8 +36,11 @@ public class DarkBossFight : MonoBehaviour
     private float currentVelocity;
     private float smoothTime = 2f;
 
+    private int max_health;
+
     private void Start()
     {
+        max_health = health;
         phase_change1 = (int)(health * .5);
         am_immune = false;
         my_ren = my_ren = gameObject.GetComponent<Renderer>();
@@ -83,6 +87,7 @@ public class DarkBossFight : MonoBehaviour
                 kill_me = true;
             }
             Debug.Log(health);
+            bosshp_bar.SetHealth(health, max_health);
         }
     }
     IEnumerator dmgImmune()
@@ -114,7 +119,6 @@ public class DarkBossFight : MonoBehaviour
             transform.position = Vector2.MoveTowards(gameObject.transform.position, my_move_point, speed * Time.deltaTime);
             if (Vector3.Distance(transform.position, my_move_point) < 0.001f)
             {
-                Debug.Log("too close");
                 if (move_point_count >= 3)
                 {
                     move_point_count = 0;
