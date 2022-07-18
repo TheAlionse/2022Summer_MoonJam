@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7748394201153444815}
   - component: {fileID: 2259206157745198114}
   - component: {fileID: -3675502741380192871}
+  - component: {fileID: 8288685434155131839}
   m_Layer: 0
   m_Name: cumbee_bullet
   m_TagString: PlayerProjectile
@@ -363,5 +364,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d143e031271345f49906cc7dab29d251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8288685434155131839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672356971844622926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25656fd0bbba5b348adb1063f5b688c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
