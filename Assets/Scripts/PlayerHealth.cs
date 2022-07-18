@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void takeDamage(int dmg)
     {
+        Debug.Log(dmg);
         if (immune == false)
         {
             take_damage_audio.Play();
@@ -83,5 +84,14 @@ public class PlayerHealth : MonoBehaviour
     public void setcurboss(GameObject curboss)
     {
         this.curboss = curboss;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyWaterBeam")
+        {
+            int damage = collision.gameObject.GetComponent<BulletStats>().damage;
+            takeDamage(damage);
+        }
     }
 }

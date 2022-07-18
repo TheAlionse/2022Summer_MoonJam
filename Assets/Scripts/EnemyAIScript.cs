@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyAIScript : MonoBehaviour
 {
     public float speed;
-    public float health;
-    public float damage;
+    public int health;
+    public int damage;
     public SpriteRenderer spriteRenderer;
     bool looking_right = true;
     Vector3 initialScale;
@@ -43,7 +43,7 @@ public class EnemyAIScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerProjectile")
         {
-            float damage = collision.gameObject.GetComponent<BulletStats>().damage;
+            int damage = collision.gameObject.GetComponent<BulletStats>().damage;
             health -= damage;
             StartCoroutine(TakeDamage());
             if (health <= 0)
@@ -57,7 +57,7 @@ public class EnemyAIScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "WaterBeam")
         {
-            float damage = collision.gameObject.GetComponent<BulletStats>().damage;
+            int damage = collision.gameObject.GetComponent<BulletStats>().damage;
             health -= damage;
             StartCoroutine(TakeDamage());
             if (health <= 0)
@@ -74,5 +74,13 @@ public class EnemyAIScript : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         spriteRenderer.color = new Color(255, 255, 255);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
+        }
     }
 }

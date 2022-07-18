@@ -10,7 +10,7 @@ public class CoomdraAIScript : MonoBehaviour
     public float chargeSpeed;
     public float chargeDelay;
     public float chargeDuration;
-    public float health = 100;
+    public int health = 100;
     public float chargeCooldown;
 
     bool looking_right = true;
@@ -91,7 +91,7 @@ public class CoomdraAIScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerProjectile")
         {
-            float damage = collision.gameObject.GetComponent<BulletStats>().damage;
+            int damage = collision.gameObject.GetComponent<BulletStats>().damage;
             health -= damage;
             StartCoroutine(TakeDamage());
             if (health <= 0)
@@ -105,7 +105,7 @@ public class CoomdraAIScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "WaterBeam")
         {
-            float damage = collision.gameObject.GetComponent<BulletStats>().damage;
+            int damage = collision.gameObject.GetComponent<BulletStats>().damage;
             health -= damage;
             StartCoroutine(TakeDamage());
             if (health <= 0)

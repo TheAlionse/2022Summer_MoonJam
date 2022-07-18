@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunStats : MonoBehaviour
 {
-    public float damage;
+    public int damage;
     public float cooldown;
     public float range_or_duration;
     public int max_bullet_count;

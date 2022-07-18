@@ -18,7 +18,7 @@ public class HemoroaidAIScript : MonoBehaviour
     public float frenzyAttackCooldown;
     public float normalShootDuration;
     public float normalShootCooldown;
-    public float health;
+    public int health;
 
     bool looking_right = false;
     Vector3 initialScale;
@@ -231,7 +231,7 @@ public class HemoroaidAIScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerProjectile")
         {
-            float damage = collision.gameObject.GetComponent<BulletStats>().damage;
+            int damage = collision.gameObject.GetComponent<BulletStats>().damage;
             health -= damage;
             StartCoroutine(TakeDamage());
             if (health <= 0)
@@ -245,7 +245,7 @@ public class HemoroaidAIScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "WaterBeam")
         {
-            float damage = collision.gameObject.GetComponent<BulletStats>().damage;
+            int damage = collision.gameObject.GetComponent<BulletStats>().damage;
             health -= damage;
             StartCoroutine(TakeDamage());
             if (health <= 0)

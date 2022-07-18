@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class BulletStats : MonoBehaviour
 {
-    [HideInInspector] public float damage;
+    [HideInInspector] public int damage;
 }

@@ -6,7 +6,12 @@ public class DestroyOnHit : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.tag == "Enemy" && tag != "EnemyProjectile") || collision.gameObject.tag == "Player" && tag != "PlayerProjectile")
+        if(collision.gameObject.tag == "Player" && tag == "EnemyProjectile")
+        {
+            collision.gameObject.GetComponent<PlayerHealth>().takeDamage(gameObject.GetComponent<BulletStats>().damage);
+        }
+
+        if((collision.gameObject.tag == "Enemy" && tag == "PlayerProjectile") || (collision.gameObject.tag == "Player" && tag == "EnemyProjectile"))
         {
             Destroy(gameObject);
         }

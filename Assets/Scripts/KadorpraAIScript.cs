@@ -8,7 +8,7 @@ public class KadorpraAIScript : MonoBehaviour
     public List<GameObject> points;
     public SpriteRenderer spriteRenderer;
     public float speed;
-    public float health = 100;
+    public int health = 100;
 
     bool looking_right = true;
     Rigidbody2D rb;
@@ -67,7 +67,7 @@ public class KadorpraAIScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerProjectile")
         {
-            float damage = collision.gameObject.GetComponent<BulletStats>().damage;
+            int damage = collision.gameObject.GetComponent<BulletStats>().damage;
             health -= damage;
             StartCoroutine(TakeDamage());
             if (health <= 0)
@@ -81,7 +81,7 @@ public class KadorpraAIScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "WaterBeam")
         {
-            float damage = collision.gameObject.GetComponent<BulletStats>().damage;
+            int damage = collision.gameObject.GetComponent<BulletStats>().damage;
             health -= damage;
             StartCoroutine(TakeDamage());
             if (health <= 0)
