@@ -41,6 +41,8 @@ public class HemoroaidAIScript : MonoBehaviour
 
     IEnumerator Shoot()
     {
+        yield return new WaitForSeconds(2f);
+
         while (true)
         {
             Debug.Log("shoot start");
