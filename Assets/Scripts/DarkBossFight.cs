@@ -42,6 +42,7 @@ public class DarkBossFight : MonoBehaviour
 
     private void Start()
     {
+        health = max_health;
         speed = max_speed;
         phase_change1 = (int)(health * .5);
         am_immune = false;

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   health: 40
-  damage: 6
+  damage: 12
   spriteRenderer: {fileID: 2937669389803153322}
 --- !u!50 &2937669389803153319
 Rigidbody2D:

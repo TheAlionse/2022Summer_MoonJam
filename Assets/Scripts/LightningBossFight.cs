@@ -37,6 +37,7 @@ public class LightningBossFight : MonoBehaviour
     private int health;
     private void Start()
     {
+        health = max_health;
         phase_change1 = (int)(health * .7);
         phase_change2 = (int)(health * .4);
         am_immune = false;

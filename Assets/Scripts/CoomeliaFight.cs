@@ -64,6 +64,7 @@ public class CoomeliaFight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = max_health;
         speed = max_speed;
         am_immune = false;
         phase_change1 = (int)(health * .7);

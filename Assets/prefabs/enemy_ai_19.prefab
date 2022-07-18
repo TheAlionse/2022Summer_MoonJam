@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   health: 10
-  damage: 2
+  damage: 8
   spriteRenderer: {fileID: 8736070035792984415}
 --- !u!60 &8736070035792984413
 PolygonCollider2D:
