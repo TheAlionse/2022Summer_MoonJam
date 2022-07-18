@@ -5,9 +5,9 @@ using UnityEngine;
 public class BadSpawner : MonoBehaviour
 {
     public float spawn_timer;
-    public GameObject borpmon_prefab;
+    public GameObject[] borpmon_prefabs;
 
-    public Collider2D my_collider;
+    public CircleCollider2D my_collider;
 
     private bool waiting;
 
@@ -27,8 +27,21 @@ public class BadSpawner : MonoBehaviour
     IEnumerator Spawner()
     {
         //maybe check if not in camera later
-        Vector3 spawn_point = new Vector3(Random.Range(my_collider.bounds.min.x, my_collider.bounds.max.x), Random.Range(my_collider.bounds.min.y, my_collider.bounds.max.y),  0);
-        GameObject spawned = Instantiate(borpmon_prefab);
+        float x = ((my_collider.radius / 2) + 1) * 2;
+        float random_x = Random.Range(my_collider.radius/2, (my_collider.radius/2) + x);
+        if(random_x > my_collider.radius)
+        {
+            random_x = (x/2) - random_x;
+        }
+
+        float random_y = Random.Range(my_collider.radius / 2, (my_collider.radius / 2) + x);
+        if (random_y > my_collider.radius)
+        {
+            random_y = (x / 2) - random_y;
+        }
+
+        Vector3 spawn_point = new Vector3(random_x+transform.position.x, random_y + transform.position.y, 0);
+        GameObject spawned = Instantiate(borpmon_prefabs[Random.Range(0,borpmon_prefabs.Length)]);
         spawned.transform.position = spawn_point;
         waiting = true;
         yield return new WaitForSeconds(spawn_timer);

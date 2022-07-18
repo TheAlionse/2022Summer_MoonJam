@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8736070035792984412}
   m_Layer: 0
   m_Name: enemy_ai_19
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  health: 5
+  health: 3
   damage: 1
   spriteRenderer: {fileID: 8736070035792984415}
 --- !u!60 &8736070035792984413

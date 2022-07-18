@@ -26,7 +26,7 @@ public class EnemyAIScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var delta = GameObject.FindGameObjectsWithTag("Player")[0].transform.position - transform.position;
+        var delta = player.transform.position - transform.position;
         if (delta.x >= 0 && !looking_right)
         {
             transform.localScale = initialScale;

@@ -87,5 +87,6 @@ public class GunBehavior : MonoBehaviour
         {
             gunObject.transform.localScale = new Vector3(-gunObject.transform.localScale.x, gunObject.transform.localScale.y, gunObject.transform.localScale.z);
         }
+        cooldown_timestamp = Time.time;
     }
 }
