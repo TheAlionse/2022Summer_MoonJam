@@ -193,7 +193,10 @@ public class GunBehavior : MonoBehaviour
 
     public string getcurgun()
     {
-        GameObject mygun = guns[last_gun_index];
+        if (last_gun_index == -1)
+        {
+            return "Coomelia";
+        }
         return guns[last_gun_index].name;
     }
 }
