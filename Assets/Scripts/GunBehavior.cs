@@ -38,7 +38,7 @@ public class GunBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && cooldown_timestamp <= Time.time && gunObject.name != "hemoroaid(Clone)")
+        if (Input.GetMouseButtonDown(0) && cooldown_timestamp <= Time.time && gunObject.name != "hemoroaid(Clone)" && gunObject!= null)
         {
             cooldown_timestamp = Time.time + gunStats.cooldown;
             gunObject.SendMessage("Shoot");
