@@ -6,7 +6,7 @@ public class DarkBossFight : MonoBehaviour
 {
     public int max_health;
     public float shadowball_force;
-    public float speed;
+    public float max_speed;
     public GameObject shadowball_prefab;
     public GameObject dark_exit;
     public GameObject route_block;
@@ -38,8 +38,11 @@ public class DarkBossFight : MonoBehaviour
 
     private int health;
 
+    private float speed;
+
     private void Start()
     {
+        speed = max_speed;
         phase_change1 = (int)(health * .5);
         am_immune = false;
         my_ren = my_ren = gameObject.GetComponent<Renderer>();
@@ -51,6 +54,7 @@ public class DarkBossFight : MonoBehaviour
 
     void OnEnable()
     {
+        speed = max_speed;
         am_immune = false;
         move_point_count = 0;
         move_circle = true;
