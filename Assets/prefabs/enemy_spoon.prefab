@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5851021676209025325}
   - component: {fileID: -4894825654156731641}
   - component: {fileID: -7300669607984027045}
+  - component: {fileID: -3741658974912609256}
   m_Layer: 0
   m_Name: enemy_spoon
   m_TagString: EnemyProjectile
@@ -186,5 +187,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d143e031271345f49906cc7dab29d251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3741658974912609256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632239560102841435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25656fd0bbba5b348adb1063f5b688c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

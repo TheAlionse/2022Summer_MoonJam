@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6597889390435075611}
   - component: {fileID: 7285228715278235885}
   - component: {fileID: 804203213336487838}
+  - component: {fileID: 3966305171042506241}
   m_Layer: 0
   m_Name: enemy_coom_3
   m_TagString: EnemyProjectile
@@ -166,5 +167,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d143e031271345f49906cc7dab29d251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3966305171042506241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372557104215013059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25656fd0bbba5b348adb1063f5b688c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
