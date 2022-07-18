@@ -89,4 +89,14 @@ public class GunBehavior : MonoBehaviour
         }
         cooldown_timestamp = Time.time;
     }
+
+    public void AddGun(GameObject gun_prefab)
+    {
+        guns.Add(gun_prefab);
+    }
+
+    public void AddSpecialGun(GameObject gun_prefab)
+    {
+        specialGun = gun_prefab;
+    }
 }
