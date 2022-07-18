@@ -4,7 +4,7 @@ using UnityEngine;
 public class CoomeliaFight : MonoBehaviour
 {
     public int max_health;
-    public float speed;
+    public float max_speed;
     public float pyscho_cut_force; 
     public float moonblast_force;
 
@@ -59,10 +59,12 @@ public class CoomeliaFight : MonoBehaviour
     private int phase_change2;
 
     private int health;
+    private float speed;
 
     // Start is called before the first frame update
     void Start()
     {
+        speed = max_speed;
         am_immune = false;
         phase_change1 = (int)(health * .7);
         phase_change2 = (int)(health * .4);
@@ -78,6 +80,7 @@ public class CoomeliaFight : MonoBehaviour
 
     void OnEnable()
     {
+        speed = max_speed;
         am_immune = false;
         move = true;
         stay = true;
