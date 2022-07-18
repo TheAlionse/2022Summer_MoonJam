@@ -57,7 +57,7 @@ public class HouseInteract : MonoBehaviour
                 scream.Play();
             }
             player.GetComponent<PlayerHealth>().heal_player(1000);
-            player.GetComponent<PlayerMoveTest>().respawn_point = player.transform.position;
+            player.GetComponent<PlayerMoveTest>().respawn_point = GameObject.FindGameObjectWithTag("Player").transform.position;
             Debug.Log(player.GetComponent<PlayerMoveTest>().respawn_point);
         }
         yield return null;

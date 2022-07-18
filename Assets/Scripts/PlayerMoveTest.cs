@@ -73,6 +73,11 @@ public class PlayerMoveTest : MonoBehaviour
         {
             dash_cool_down -= Time.deltaTime;
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            gameObject.GetComponent<PlayerHealth>().takeDamage(1000);
+        }
     }
 
     private void FixedUpdate()

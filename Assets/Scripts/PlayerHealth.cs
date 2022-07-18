@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
                 //die to boss
                 if (curboss != null)
                     curboss.SetActive(false);
-                if(bosstrigger != null)
+                if (bosstrigger != null)
                 {
                     Debug.Log("reactivate trigger");
                     bosstrigger.SetActive(true);
@@ -66,6 +66,7 @@ public class PlayerHealth : MonoBehaviour
                 //play death stuff
             }
         }
+
     }
 
     IEnumerator dmgImmune()
