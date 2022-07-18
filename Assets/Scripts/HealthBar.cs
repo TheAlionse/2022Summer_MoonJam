@@ -13,7 +13,7 @@ public class HealthBar : MonoBehaviour
     void Start()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
-        max_health = 10;
+        max_health = 100;
         width = 330;
 
         hp_fill = root.Q<VisualElement>("Fill");
@@ -22,7 +22,7 @@ public class HealthBar : MonoBehaviour
     public void SetHealth(int health)
     {
         //replaced Max_health with 10 cause of weird error
-        var new_width = (width / 10) * health;
+        var new_width = (width / 100) * health;
         hp_fill.style.width = new_width;
     }
 

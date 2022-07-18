@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int player_health = 10;
+    public int player_health;
     public int max_health;
     private  static GameObject my_health_bar;
     public GameObject death_ui;
@@ -41,7 +41,15 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log(player_health);
             if (player_health <= 0)
             {
-
+                GameObject[] ais = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach (GameObject ai in ais)
+                {
+                    Debug.Log(ai.layer);
+                    if (ai.layer == LayerMask.NameToLayer("simple_ai"))
+                    {
+                        Destroy(ai);
+                    }
+                }
                 Debug.Log("Ded");
                 death_ui.GetComponent<DeathUIDoc>().enabledeathroot();
                 //die to boss

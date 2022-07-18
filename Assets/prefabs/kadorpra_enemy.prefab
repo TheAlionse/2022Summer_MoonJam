@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9067409170236973712}
   - component: {fileID: 9067409170236973727}
   - component: {fileID: 9067409170236973726}
+  - component: {fileID: 8581577218970735632}
   m_Layer: 0
   m_Name: kadorpra_enemy
   m_TagString: Untagged
@@ -104,11 +105,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spoon: {fileID: 632239560102841435, guid: 9a4f53e777eb4bd4b9e07b01ec7b67b9, type: 3}
   bulletSpawn: {fileID: 9067409170469425502}
-  shoot_audio: {fileID: 0}
+  shoot_audio: {fileID: 8581577218970735632}
   gunStats: {fileID: 9067409170236973713}
-  velocity: 15
-  size: 2
-  range: 1
 --- !u!114 &9067409170236973713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,11 +119,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9aa35486793a174697a3633263196b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  cooldown: 1
+  damage: 3
+  cooldown: 0.5
   range_or_duration: 3
   max_bullet_count: -1
-  velocity: 10
+  velocity: 15
   spread: -1
   size: 3
 --- !u!114 &9067409170236973712
@@ -144,7 +142,8 @@ MonoBehaviour:
   points: []
   spriteRenderer: {fileID: 9067409170236973714}
   speed: 3
-  health: 100
+  health: 1000
+  spawn_gun: {fileID: 0}
 --- !u!50 &9067409170236973727
 Rigidbody2D:
   serializedVersion: 4
@@ -401,6 +400,102 @@ PolygonCollider2D:
       - {x: -3.59, y: -4.6}
       - {x: -3.48, y: -4.2}
       - {x: -3.3799999, y: -3.9199998}
+--- !u!82 &8581577218970735632
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9067409170236973716}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0f8982ebdab3e4d418cdc58bcd7ff5ef, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &9067409170469425502
 GameObject:
   m_ObjectHideFlags: 0
