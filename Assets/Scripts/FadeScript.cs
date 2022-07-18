@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class FadeScript : MonoBehaviour
 {
     public VisualElement fade_screen;
+
     private void Start()
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;

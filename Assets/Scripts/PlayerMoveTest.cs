@@ -15,6 +15,8 @@ public class PlayerMoveTest : MonoBehaviour
     public Vector2 mouse_pos;
     public AudioSource dash_audio;
     public bool looking_right = true;
+    public bool can_move = true;
+
 
     public Vector2 respawn_point;
 
@@ -38,7 +40,14 @@ public class PlayerMoveTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        my_input = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        if (can_move)
+        {
+            my_input = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        }
+        else
+        {
+            my_input = Vector3.zero;
+        }
         mouse_pos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         if(Input.GetKeyDown(dash_key) & dash_cool_down <= 0)

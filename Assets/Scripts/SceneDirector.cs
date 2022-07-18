@@ -18,6 +18,8 @@ public class SceneDirector : MonoBehaviour
         dialogue_runner.AddCommandHandler("spawnlegend", spawnLegend);
         dialogue_runner.AddCommandHandler("spawnlightning", spawnlightning);
         dialogue_runner.AddCommandHandler("spawndark", spawndark);
+        dialogue_runner.AddCommandHandler("stopmove", stopmove);
+        dialogue_runner.AddCommandHandler("resumemove", resumemove);
     }
 
 
@@ -36,4 +38,15 @@ public class SceneDirector : MonoBehaviour
         my_player.GetComponent<PlayerHealth>().setcurboss(Dark_boss);
         Dark_boss.SetActive(true);
     }
+
+    private void stopmove()
+    {
+        my_player.GetComponent<PlayerMoveTest>().can_move = false;
+    }
+
+    private void resumemove()
+    {
+        my_player.GetComponent<PlayerMoveTest>().can_move = true;
+    }
+
 }

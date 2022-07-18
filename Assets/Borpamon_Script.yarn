@@ -1,48 +1,77 @@
-﻿title: GetGunOne
+﻿title: Start
+---
+<<stopmove>>
+Mom: Alright Purple, have a fun day today!
+Mom: Don't Forget to get your Borpamon from Professor Croak!
+Mom: He said he would meet you over at the lake to the left of town.
+Use WASD to move, Spacebar to dash, and LMB to shoot
+<<resumemove>>
+===
+
+title: GetGunOne
 tags:
 ---
-Press space to test!
+<<stopmove>>
+Croak: Oh Purple, I am glad you were able to make it!
+Croak: Here I have just the thing for you take this.
+<<resumemove>>
 ===
 
 title: DoNotPassTown
 ---
+<<stopmove>>
 You should get your Borpamon from the professor before leaving town!
+<<resumemove>>
 ===
 
 title: DoNotPassLightning
 ---
+<<stopmove>>
 You need to show your Lightning Type Badge before passing through. Try the yellow building with the star on the South East side of town.
+<<resumemove>>
 ===
 
 title: DoNotPassLegendary
 ---
+<<stopmove>>
 This route is closed, you need to pass through the cave to make it to the town.
+<<resumemove>>
 ===
 
 title: DoNotPassDark
 ---
+<<stopmove>>
 You need to show your Dark Type Badge before taking this route. Try the red building with the star on the North side of town.
+<<resumemove>>
 ===
 
 title: HealReminder
 ---
+<<stopmove>>
 If you ever need to heal, check by the purple house with the moon on it.
+If you end up fainting you will be brought back to the last house you checked in with.
+<<resumemove>>
 ===
 
 title: DarkFightEnter
 ---
+<<stopmove>>
 <<wait 1>>
 <<spawndark>>
+<<resumemove>>
 ===
 
 title: LightningFightEnter
 ---
+<<stopmove>>
 <<wait 1>>
 <<spawnlightning>>
+<<resumemove>>
 ===
 
 title: LegenedFightEnter
 ---
 <<wait 1>>
 <<spawnlegend>>
+<<resumemove>>
 ===

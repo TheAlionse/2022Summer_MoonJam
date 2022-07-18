@@ -24,7 +24,10 @@ public class RouteBlock : MonoBehaviour
         {
             collision.GetComponent<PlayerHealth>().SetBossTrigger(gameObject);
         }
-        dialogue_runner.StartDialogue(DialogTitle);
+        if(DialogTitle != null)
+        {
+            dialogue_runner.StartDialogue(DialogTitle);
+        }
         gameObject.SetActive(false);
     }
 }
