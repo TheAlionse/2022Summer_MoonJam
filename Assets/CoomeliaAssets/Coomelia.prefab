@@ -156,8 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9655cf736f3cdf14b9dd8d8974309379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 250
-  speed: 3
+  max_health: 3000
+  max_speed: 2
   pyscho_cut_force: 10
   moonblast_force: 8
   future_leftx_coord: 180
@@ -174,6 +174,7 @@ MonoBehaviour:
   moonblast_prefab: {fileID: 6093578675896712612, guid: 437be6ed4fe23e84c95a6755100e9eeb, type: 3}
   cave_exit: {fileID: 0}
   route_block: {fileID: 0}
+  legendgun: {fileID: 0}
   charging_beam_audio: {fileID: 1001319407}
   switch_sides_audio: {fileID: 1001319408}
   firing_beam_audio: {fileID: 1001319409}
@@ -868,7 +869,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8b5547b66562d8f4a90dfd78eb455320, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.796
+  m_Volume: 0.61
   m_Pitch: 1
   Loop: 0
   Mute: 0

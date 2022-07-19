@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a3f31983a6ad444a134ab8869ea22e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guns: []
+  specialGun: {fileID: 0}
+  gunSwapCooldown: 0
+  specialGunSwapCooldown: 0
+  my_inventory: {fileID: 0}
 --- !u!1 &5459965178192971769
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,6 +163,9 @@ MonoBehaviour:
   mouse_pos: {x: 0, y: 0}
   dash_audio: {fileID: 5459965178858908529}
   looking_right: 1
+  can_move: 1
+  respawn_point: {x: 0, y: 0}
+  boost_bar: {fileID: 0}
 --- !u!50 &5459965178192971775
 Rigidbody2D:
   serializedVersion: 4
@@ -217,9 +225,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8adcecf3e8c2188499078aef7996fd46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_health: 10
-  max_health: 10
-  health_bar: {fileID: 0}
+  player_health: 100
+  max_health: 100
+  death_ui: {fileID: 0}
   take_damage_audio: {fileID: 5459965178858908530}
 --- !u!82 &5459965178858908529
 AudioSource:

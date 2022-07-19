@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <Style src="project://database/Assets/UI/UserInterfaceStyleSheet.uss?fileID=7433441132597879392&amp;guid=ee4076477e2b1ac4f9764e388952ba47&amp;type=3#UserInterfaceStyleSheet" />
-    <ui:VisualElement name="Canvas" style="flex-grow: 1; justify-content: flex-start; margin-bottom: 0; margin-left: 0; align-items: center; margin-top: 20px; padding-top: 0; display: none; visibility: hidden;">
-        <ui:VisualElement name="GroupBox2" style="display: none;">
+    <ui:VisualElement name="Canvas" style="flex-grow: 1; justify-content: flex-start; margin-bottom: 0; margin-left: 0; align-items: center; margin-top: 20px; padding-top: 0; display: flex; visibility: visible;">
+        <ui:VisualElement name="GroupBox2" style="display: flex;">
             <ui:VisualElement name="FillBG" style="position: absolute; height: 62px; width: 1300px; top: 8px; left: 112px; background-color: rgb(188, 188, 188);" />
             <ui:VisualElement name="Fill2" style="position: absolute; height: 62px; width: 1300px; top: 8px; left: 112px; background-color: rgb(128, 0, 128);" />
             <ui:VisualElement name="Border2" style="background-image: url(&apos;project://database/Assets/Sprites/boss-hp-bar.png?fileID=2800000&amp;guid=4d704140b39ab9e499c509cf5c8bd2c3&amp;type=3#boss-hp-bar&apos;); width: 1440px; height: 80px;" />

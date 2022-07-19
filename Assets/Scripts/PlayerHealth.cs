@@ -28,6 +28,8 @@ public class PlayerHealth : MonoBehaviour
     {
         player_health = Mathf.Min(player_health + heal, max_health);
         my_health_bar.GetComponent<HealthBar>().SetHealth(player_health);
+        Debug.Log(max_health);
+        Debug.Log(player_health);
     }
     public void takeDamage(int dmg)
     {

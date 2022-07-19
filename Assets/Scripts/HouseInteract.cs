@@ -56,7 +56,7 @@ public class HouseInteract : MonoBehaviour
             {
                 scream.Play();
             }
-            player.GetComponent<PlayerHealth>().heal_player(1000);
+            player.GetComponent<PlayerHealth>().heal_player(10000);
             player.GetComponent<PlayerMoveTest>().respawn_point = GameObject.FindGameObjectWithTag("Player").transform.position;
             Debug.Log(player.GetComponent<PlayerMoveTest>().respawn_point);
         }

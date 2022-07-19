@@ -51,7 +51,7 @@ public class GunBehavior : MonoBehaviour
         }
     }
 
-    void SwapGun()
+    public void SwapGun()
     {
         if(guns.Count >= 2)
         {
@@ -172,8 +172,9 @@ public class GunBehavior : MonoBehaviour
 
     }
 
-    IEnumerator RandomizeGun()
+    public IEnumerator RandomizeGun()
     {
+        Debug.Log("started random");
         while (true)
         {
             if (last_gun_index == -1)

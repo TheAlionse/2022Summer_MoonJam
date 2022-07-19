@@ -34,10 +34,8 @@ public class BadSpawner : MonoBehaviour
 
     IEnumerator Spawner()
     {
-        Debug.Log("disable spawner:" + sm.disableSpawning);
         if (!sm.disableSpawning)
         {
-            Debug.Log("spawn");
             float x = ((my_collider.radius / 2) + 1) * 2;
             float random_x = Random.Range(my_collider.radius / 2, (my_collider.radius / 2) + x);
             if (random_x > my_collider.radius)

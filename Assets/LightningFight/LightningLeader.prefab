@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4650135532614139137
 Transform:
   m_ObjectHideFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d09014e88497a934cb63527ecbe060a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.12, y: 1.12}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -125,15 +125,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c899a0a3e9cb9e4d97415f17efa19f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  max_health: 2750
   max_static_size: 8
   smoothTime: 2
-  bolt_force: 15
+  bolt_force: 25
   lightning_ring_prefab: {fileID: 4650135533609804014}
   bolt_warning_prefab: {fileID: 6641908548821079240, guid: ace2f7bce79de9f4480b9eeec4c303f2, type: 3}
   bolt_attack_prefab: {fileID: 6452906392020516404, guid: 034741b9ef166264d8d49a0d0c22dd77, type: 3}
   lightning_rods_prefab: {fileID: 6299632763223157419, guid: 554e1e3111048534aaaf5c1dd30e568d, type: 3}
   lightning_connections_prefab: {fileID: 6452906392020516404, guid: 034741b9ef166264d8d49a0d0c22dd77, type: 3}
+  lightning_exit: {fileID: 0}
+  route_block: {fileID: 0}
 --- !u!1 &4650135533609804014
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,4 +250,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0127b439672d3e7498d5f68b54fe921c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 1
+  dmg: 5

@@ -58,16 +58,19 @@ public class CoomdraAIScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var delta = GameObject.FindGameObjectsWithTag("Player")[0].transform.position - transform.position;
-        if (delta.x >= 0 && !looking_right)
+        if (GameObject.FindGameObjectsWithTag("Player") != null)
         {
-            transform.localScale = initialScale;
-            looking_right = true;
-        }
-        else if (delta.x < 0 && looking_right)
-        {
-            transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
-            looking_right = false;
+            var delta = GameObject.FindGameObjectsWithTag("Player")[0].transform.position - transform.position;
+            if (delta.x >= 0 && !looking_right)
+            {
+                transform.localScale = initialScale;
+                looking_right = true;
+            }
+            else if (delta.x < 0 && looking_right)
+            {
+                transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
+                looking_right = false;
+            }
         }
     }
 
